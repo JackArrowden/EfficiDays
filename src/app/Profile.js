@@ -1,6 +1,5 @@
-import { View, Text, Image, TextInput, TouchableOpacity, Dimensions, SafeAreaView } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, Dimensions, SafeAreaView, StatusBar } from "react-native";
 import React from "react";
-import { StatusBar } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import global from "../style/global"
