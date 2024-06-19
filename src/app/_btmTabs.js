@@ -36,7 +36,7 @@ const Tabs = () => {
                     tabBarIcon: ({focused}) => (
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Image
-                                source={require('../assets/icon/learn2.png')}
+                                source={require('../assets/icon/btmBar/learn2.png')}
                                 resizeMode='contain'
                                 style={{
                                     width: 25,
@@ -56,7 +56,7 @@ const Tabs = () => {
                     tabBarIcon: ({focused}) => (
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Image
-                                source={require('../assets/icon/note2.png')}
+                                source={require('../assets/icon/btmBar/note2.png')}
                                 resizeMode='contain'
                                 style={{
                                     width: 25,
@@ -76,7 +76,7 @@ const Tabs = () => {
                     tabBarIcon: ({focused}) => (
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Image
-                                source={require('../assets/icon/todo2.png')}
+                                source={require('../assets/icon/btmBar/todo2.png')}
                                 resizeMode='contain'
                                 style={{
                                     width: 25,
@@ -96,7 +96,7 @@ const Tabs = () => {
                     tabBarIcon: ({focused}) => (
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Image
-                                source={require('../assets/icon/shop2.png')}
+                                source={require('../assets/icon/btmBar/shop2.png')}
                                 resizeMode='contain'
                                 style={{
                                     width: 25,
@@ -116,7 +116,7 @@ const Tabs = () => {
                     tabBarIcon: ({focused}) => (
                         <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Image
-                                source={require('../assets/icon/profile2.png')}
+                                source={require('../assets/icon/btmBar/profile2.png')}
                                 resizeMode='contain'
                                 style={{
                                     width: 25,

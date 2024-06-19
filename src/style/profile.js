@@ -1,7 +1,7 @@
 const l_profile = {
     global : {
-        marginTop: 8,
-        marginBottom: 8,
+        marginTop: 4,
+        marginBottom: 4,
         marginLeft: 24,
         marginRight: 24,
     },
@@ -11,9 +11,25 @@ const l_profile = {
         textAlign: 'center'
     },
 
-    in4Frame : {
-        paddingLeft: 40,
+    line : {
+        height: 1, // Chiều cao của đường kẻ
+        backgroundColor: '#bbb', // Màu sắc của đường kẻ, có thể tùy chỉnh theo nhu cầu
+        marginVertical: 16,
+    },
 
+    circle1 : {
+        borderRadius: '50%',
+        backgroundColor: '#867f7f'
+    },
+
+    circle2 : {
+        borderRadius: '50%',
+        backgroundColor: '#ffffff'
+    },
+
+    in4Frame : {
+        paddingLeft: 20,
+        margin: "auto",
         borderRadius: 11,
         backgroundColor: '#ffffff',
     },
@@ -24,17 +40,17 @@ const l_profile = {
     },
 
     in4Txt : {
-        color: "#666",
-        fontSize: "14px",
+        color: "#888",
+        fontSize: "12px",
         fontStyle: "normal",
         fontWeight: 400,
         lineHeight: "normal",
         letterSpacing: "1.4px"
     },
 
-    in4Txt2: {
+    in4Txt2 : {
         color: "#444",
-        fontSize: "14px",
+        fontSize: "13px",
         fontStyle: "normal",
         fontWeight: 400,
         lineHeight: "normal",
@@ -54,6 +70,11 @@ const l_profile = {
         fontWeight: 400,
         lineHeight: "normal",
         letterSpacing: "1.4px"
+    },
+
+    iconFrame : {
+        height: 28,
+        width: 28
     },
 
     setHW(height, width) {

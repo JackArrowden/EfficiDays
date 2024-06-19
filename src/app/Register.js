@@ -23,7 +23,7 @@ export default function Register() {
         <View style={[global.f, l_login.global, global.mt_48]}>
           <TouchableOpacity 
             style={[global.container, l_login.self, l_login.setHW(height / 16, width / 3), l_login.btn1]}
-            onPress={()=>navigation.push('Tabs')}
+            onPress={()=>navigation.navigate('Login')}
           >
             <Text style={[l_login.self, l_login.txt1]}>Register</Text>
           </TouchableOpacity>

@@ -3,12 +3,32 @@ const global = {
     display: 'flex'
   },
 
+  f0_6 : {
+    display: 'flex',
+    flex: 0.6
+  },
+
+  f0_75 : {
+    display: 'flex',
+    flex: 0.75
+  },
+
+  f1 : {
+    display: 'flex',
+    flex: 1
+  },
+
+  f4 : {
+    display: 'flex',
+    flex: 4
+  },
+
   self : { 
     backgroundColor: '#E0FBE2' 
   },
 
   container : {
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   f_row : {
@@ -28,7 +48,13 @@ const global = {
     margin: 10,
   },
 
-  img : {},
+  imgFrame : {
+    overflow: 'hidden'
+  },
+
+  img : {
+    zIndex: 10
+  },
 
   mt_16 : {
     marginTop: 16
@@ -44,6 +70,26 @@ const global = {
 
   mt_96 : {
     marginTop: 96
+  },
+
+  ml_2 : {
+    marginLeft: 2
+  },
+
+  p2 : {
+    padding: 2
+  },
+
+  p4 : {
+    padding: 4
+  },
+
+  p8 : {
+    padding: 8
+  },
+
+  p16: {
+    padding: 16
   },
 
   setHW(height, width) {
