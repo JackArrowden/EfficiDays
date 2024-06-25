@@ -8,6 +8,8 @@ import Register from './app/Register';
 
 import Tabs from './app/_btmTabs';
 
+import ViewNote from './app/_noteTab/viewNote';
+
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Stack.Screen name="Register" component={Register} />
 
         <Stack.Screen name="Tabs" component={Tabs} options={{gestureEnabled: false}} />
+
+        <Stack.Screen name="ViewNote" component={ViewNote} />
       </Stack.Navigator>
     </NavigationContainer>
   );

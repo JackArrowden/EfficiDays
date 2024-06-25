@@ -13,7 +13,7 @@ const l_note = {
 
     searchBar : {
         paddingLeft: 15,
-        borderRadius: '20px',
+        borderRadius: 20,
         backgroundColor: '#BFF6C3'
     },
 
@@ -48,14 +48,14 @@ const l_note = {
     },
 
     noteHeader : {
-        borderTopLeftRadius: '5px',
-        borderTopRightRadius: '5px',
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5,
         backgroundColor: '#B0EBB4'
     },
 
     notePreview : {
-        borderBottomLeftRadius: '8px',
-        borderBottomRightRadius: '8px',
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
         backgroundColor: '#FFF'
     },
 
@@ -63,20 +63,20 @@ const l_note = {
         paddingTop: 6,
         paddingLeft: 15,
         color: '#555',
-        fontSize: '12px',
-        letterSpacing: "1.4px"
+        fontSize: 12,
+        letterSpacing: 1.4
     },
 
     noteText2 : {
         paddingTop: 5,
         paddingLeft: 15,
         color: '#888',
-        fontSize: '12px',
-        letterSpacing: "1.4px"
+        fontSize: 12,
+        letterSpacing: 1.4
     },
 
     circle : {
-        borderRadius: '50%',
+        borderRadius: 9999,
         backgroundColor: '#B0EBB4',
         position: 'relative'
     },

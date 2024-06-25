@@ -17,10 +17,10 @@ export default function Note() {
   return (
     <View style={[global.f_col, global.container, global.self, global.setHW(inHeight, width)]}>
       <SearchBar height={inHeight}/>
-      <AddNoteBtn height={inHeight}/>
+      <AddNoteBtn height={inHeight} nav="ViewNote"/>
 
       <ScrollView style={[global.f_col, global.setHW(inHeight / 2)]}>
-        <NoteFrame height={inHeight} textHeader="Your first note" notePreview="Details of your first note..."/>
+        <NoteFrame height={inHeight} textHeader="Your first note" notePreview="Details of your first note..." nav="ViewNote"/>
         <NoteFrame height={inHeight} textHeader="Your second note" notePreview="Details of your second note..."/>
         <NoteFrame height={inHeight} textHeader="Your third note" notePreview="Details of your third note..."/>
         <NoteFrame height={inHeight} textHeader="Your fourth note" notePreview="Details of your fourth note..."/>

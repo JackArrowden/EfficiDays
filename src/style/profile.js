@@ -18,12 +18,12 @@ const l_profile = {
     },
 
     circle1 : {
-        borderRadius: '50%',
+        borderRadius: 9999,
         backgroundColor: '#867f7f'
     },
 
     circle2 : {
-        borderRadius: '50%',
+        borderRadius: 9999,
         backgroundColor: '#ffffff'
     },
 
@@ -41,20 +41,16 @@ const l_profile = {
 
     in4Txt : {
         color: "#888",
-        fontSize: "12px",
+        fontSize: 12,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "1.4px"
+        letterSpacing: 1.4
     },
 
     in4Txt2 : {
         color: "#444",
-        fontSize: "13px",
+        fontSize: 13,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "1.4px"
+        letterSpacing: 1.4
     },
 
     btn1 : {
@@ -65,11 +61,9 @@ const l_profile = {
     txt1 : {
         color: "#444",
         textAlign: "center",
-        fontSize: "14px",
+        fontSize: 14,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "1.4px"
+        letterSpacing: 1.4
     },
 
     iconFrame : {

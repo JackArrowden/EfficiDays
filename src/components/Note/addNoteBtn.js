@@ -13,7 +13,10 @@ const AddNoteBtn = ({
     const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={[global.f_row, global.container, global.setHW(height / 16), global.mb_32]}>
+    <TouchableOpacity 
+        style={[global.f_row, global.container, global.setHW(height / 16), global.mb_32]}
+        onPress={()=>navigation.navigate(nav)}
+    >
         <View style={[global.container, global.setHW(circleSize, circleSize), l_note.circle]}>
             <Image
                 source={require('../../assets/icon/note/addNote2.png')}

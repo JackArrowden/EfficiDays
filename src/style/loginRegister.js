@@ -18,11 +18,9 @@ const l_login = {
         backgroundColor: '#ffffff',
         flex: 1,
         color: "#444",
-        fontSize: "16px",
+        fontSize: 16,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "1.4px"
+        letterSpacing: 1.4
     },
 
     btn1 : {
@@ -37,31 +35,25 @@ const l_login = {
     txt : {
         color: "#444",
         textAlign: "center",
-        fontSize: "9px",
+        fontSize: 9,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "0.9px"     
+        letterSpacing: 0.9    
     },
 
     txt1 : {
         color: "#444",
         textAlign: "center",
-        fontSize: "14px",
+        fontSize: 14,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "1.4px"
+        letterSpacing: 1.4
     },
 
     txt2 : {
         color: "#0e7315",
         textAlign: "center",
-        fontSize: "9px",
+        fontSize: 9,
         fontStyle: "normal",
-        fontWeight: '400',
-        lineHeight: "normal",
-        letterSpacing: "0.9px",
+        letterSpacing: 0.9,
 
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
         textShadowRadius: 10

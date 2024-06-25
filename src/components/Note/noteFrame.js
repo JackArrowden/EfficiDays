@@ -19,7 +19,10 @@ const NoteFrame = ({
             <Text style={[l_note.noteText1]}>{textHeader}</Text>
         </View>
 
-        <TouchableOpacity style={[global.f_row, global.f0_6, l_note.notePreview]}>
+        <TouchableOpacity 
+            style={[global.f_row, global.f0_6, l_note.notePreview]}
+            onPress={()=>navigation.navigate(nav)}
+        >
             <Text style={[l_note.noteText2]}>{notePreview}</Text>
         </TouchableOpacity>
     </View>
