@@ -1,9 +1,8 @@
-import { View, Text, Image, TextInput, TouchableOpacity, Dimensions, SafeAreaView, ImageBackground } from "react-native";
+import { View, Dimensions} from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import global from "../style/global"
-import l_profile from "../style/profile";
 import In4Frame from "../components/Profile/infoFrame";
 import AvtFrame from "../components/Profile/avtFrame";
 
@@ -14,7 +13,7 @@ export default function Profile() {
   const inWidth = width - 48;
   
   return (
-    <View style={[global.f, global.container, global.self, global.f_col, global.setHW(inHeight, width)]}>
+    <View style={[global.f_col, global.container, global.self, global.setHW(inHeight, width)]}>
       <AvtFrame height={inHeight} width={inWidth} namePic="pic1"/>
 
       <In4Frame height={inHeight} type="Information" preView="Fellows Of Four" namePic="name2"/>

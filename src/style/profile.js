@@ -43,7 +43,7 @@ const l_profile = {
         color: "#888",
         fontSize: "12px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "1.4px"
     },
@@ -52,7 +52,7 @@ const l_profile = {
         color: "#444",
         fontSize: "13px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "1.4px"
     },
@@ -67,7 +67,7 @@ const l_profile = {
         textAlign: "center",
         fontSize: "14px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "1.4px"
     },

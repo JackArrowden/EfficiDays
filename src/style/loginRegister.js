@@ -20,7 +20,7 @@ const l_login = {
         color: "#444",
         fontSize: "16px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "1.4px"
     },
@@ -39,7 +39,7 @@ const l_login = {
         textAlign: "center",
         fontSize: "9px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "0.9px"     
     },
@@ -49,7 +49,7 @@ const l_login = {
         textAlign: "center",
         fontSize: "14px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "1.4px"
     },
@@ -59,7 +59,7 @@ const l_login = {
         textAlign: "center",
         fontSize: "9px",
         fontStyle: "normal",
-        fontWeight: 400,
+        fontWeight: '400',
         lineHeight: "normal",
         letterSpacing: "0.9px",
 

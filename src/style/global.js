@@ -3,6 +3,11 @@ const global = {
     display: 'flex'
   },
 
+  f0_3 : {
+    display: 'flex',
+    flex: 0.3
+  },
+
   f0_6 : {
     display: 'flex',
     flex: 0.6
@@ -23,6 +28,11 @@ const global = {
     flex: 4
   },
 
+  f6 : {
+    display: 'flex',
+    flex: 6
+  },
+
   self : { 
     backgroundColor: '#E0FBE2' 
   },
@@ -32,10 +42,12 @@ const global = {
   },
 
   f_row : {
+    display: 'flex',
     flexDirection: 'row'
   },
 
   f_col : {
+    display: 'flex',
     flexDirection: 'column'
   },
 
@@ -68,8 +80,28 @@ const global = {
     marginTop: 48
   },
 
+  mt_80 : {
+    marginTop: 80
+  },
+
   mt_96 : {
     marginTop: 96
+  },
+
+  mb_16 : {
+    marginBottom: 16
+  },
+
+  mb_32 : {
+    marginBottom: 32
+  },
+
+  mb_48 : {
+    marginBottom: 48
+  },
+
+  mb_96 : {
+    marginBottom: 96
   },
 
   ml_2 : {

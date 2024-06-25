@@ -31,19 +31,19 @@ const images = {
 };
 
 const In4Frame = ({
-  height = 36, 
-  type = "Information", 
-  preView = "Information",
-  namePic = "",
-  nav = "",
-  color1 = '#388C3B',
-  color2 = '#236F26'
+    height = 36, 
+    type = "Information", 
+    preView = "Information",
+    namePic = "",
+    nav = "",
+    color1 = '#388C3B',
+    color2 = '#236F26'
 }) => {
     const navigation = useNavigation();
     const picPath = images[namePic];
 
   return (
-    <View style={[global.f, global.container, global.f_row, global.setHW(height / 10 + 4), l_profile.global, l_profile.in4Frame]}>
+    <View style={[global.f_row, global.container, global.setHW(height / 10 + 4), l_profile.global, l_profile.in4Frame]}>
         <View style={[global.f0_75, global.container]}>
             <Image
                 source={picPath}
