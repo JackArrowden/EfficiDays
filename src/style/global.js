@@ -39,6 +39,7 @@ const global = {
 
   container : {
     justifyContent: 'center',
+    alignItems: 'center',
   },
 
   f_row : {

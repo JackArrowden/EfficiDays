@@ -32,7 +32,7 @@ const CardContainer = ({width, height, path}) => {
     return (
         <View style={[global.f_col, global.container, global.self, global.setHW(height, containerwidth)]}>
             { /*Card sample*/}
-            <View style={[global.f_col, l_todo.card, global.self, global.setHW(cardheight, cardwidth)]}>
+            <View style={[global.f_col, l_todo.card, l_todo.bg_darkgreen, global.setHW(cardheight, cardwidth)]}>
                 <CheckBox color={"#000"} radius = {"10"}></CheckBox>
                 <View style={[l_todo.cardContent]}>
                     <Text style={[l_todo.cardTitle]}>Card Title</Text>

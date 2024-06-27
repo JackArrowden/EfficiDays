@@ -9,8 +9,14 @@ const l_todo = {
         }
     },
 
+    bg_darkgreen: {
+      "backgroundColor": "#BFF6C3" 
+    },
+
     card: {
         "flexDirection": "row",
+        "alignSelf": "center",
+        "width": "90%",
     },
 
     cardContent: {
