@@ -30,7 +30,7 @@ const CardContainer = ({width, height, path}) => {
     let cardwidth = containerwidth * 0.8;
     let cardheight = height * 0.3;
     return (
-        <View style={[global.f_col, global.container, global.self, global.setHW(height, containerwidth)]}>
+        <View style={[global.f_col, global.container, global.alignItems_center, global.self, global.setHW(height, containerwidth)]}>
             { /*Card sample*/}
             <View style={[global.f_col, l_todo.card, l_todo.bg_darkgreen, global.setHW(cardheight, cardwidth)]}>
                 <CheckBox color={"#000"} radius = {"10"}></CheckBox>
