@@ -1,32 +1,50 @@
-import { View, Dimensions, ScrollView } from "react-native";
-import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { View, Dimensions, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
 
+// Style
 import global from "../style/global";
 
+// Component
 import SearchBar from "../components/Note/searchBar";
 import AddNoteBtn from "../components/Note/addNoteBtn";
 import NoteFrame from "../components/Note/noteFrame";
+import readNotePreview from "../components/Note/readNotePreview";
+import writeNotePreview from "../components/Note/writeNotePreview";
+import { curDir } from "../data/noteDir";
 
 export default function Note() {
-  const navigation = useNavigation();
   const { width, height } = Dimensions.get('screen');
   const inHeight = height - 48;
-  const inWidth = width - 48;
+  const [notePrev, setNotePrev] = useState([]);
+  
+  useEffect(() => {
+    getNotePrev();
+  }, []);
+
+  const getNotePrev = () => {
+    readNotePreview(curDir)
+      .then(data => {
+        console.log(data);
+        setNotePrev(data);
+      })
+  }
 
   return (
     <View style={[global.f_col, global.container, global.self, global.setHW(inHeight, width)]}>
       <SearchBar height={inHeight}/>
       <AddNoteBtn height={inHeight} nav="ViewNote"/>
 
-      <ScrollView style={[global.f_col, global.setHW(inHeight / 2)]}>
-        <NoteFrame height={inHeight} textHeader="Your first note" notePreview="Details of your first note..." nav="ViewNote"/>
-        <NoteFrame height={inHeight} textHeader="Your second note" notePreview="Details of your second note..."/>
-        <NoteFrame height={inHeight} textHeader="Your third note" notePreview="Details of your third note..."/>
-        <NoteFrame height={inHeight} textHeader="Your fourth note" notePreview="Details of your fourth note..."/>
-        <NoteFrame height={inHeight} textHeader="Your fifth note" notePreview="Details of your fifth note..."/>
-        <NoteFrame height={inHeight} textHeader="Your sixth note" notePreview="Details of your sixth note..."/>
-      </ScrollView>
+      <FlatList
+        data={notePrev}
+        renderItem={({item}) => (
+          <NoteFrame 
+            height={inHeight} 
+            textHeader={item.textHeader} 
+            notePreview={item.notePreview} 
+            nav="ViewNote"
+          />
+        )}
+      />
     </View>
   )
 }

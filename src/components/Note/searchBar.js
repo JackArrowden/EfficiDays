@@ -12,24 +12,24 @@ const SearchBar = ({
 }) => {
     const navigation = useNavigation();
 
-  return (
-    <View style={[global.f_row, global.container, global.setHW(height / 16), l_note.global, l_note.searchBar, global.mt_80, global.mb_48]}>
-        <TouchableOpacity style={[global.f0_6, global.container]}>
-            <Image
-                source={require('../../assets/icon/note/search2.png')}
-                style={[l_note.img, l_note.wh_28]}
-            />
-        </TouchableOpacity>
+    return (
+        <View style={[global.f_row, global.container, global.setHW(height / 16), l_note.global, l_note.searchBar, global.mt_80, global.mb_48]}>
+            <TouchableOpacity style={[global.f0_6, global.container]}>
+                <Image
+                    source={require('../../assets/icon/note/search2.png')}
+                    style={[l_note.img, l_note.wh_28]}
+                />
+            </TouchableOpacity>
 
-        <View style={[global.f0_3, global.container]}>
-            <View style={[l_note.line]} />
-        </View>
+            <View style={[global.f0_3, global.container]}>
+                <View style={[l_note.line]} />
+            </View>
 
-        <View style={[global.f4, global.container]}>
-            <TextInput placeholder={text}></TextInput>
+            <View style={[global.f4, global.container]}>
+                <TextInput placeholder={text}></TextInput>
+            </View>
         </View>
-    </View>
-  );
+    );
 };
 
 export default SearchBar;
