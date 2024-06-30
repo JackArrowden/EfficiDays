@@ -1,5 +1,3 @@
-import CardContainer from "../components/Todo/cardContainer";
-
 const l_todo = {
     checkBox(color, radius) {
         return {

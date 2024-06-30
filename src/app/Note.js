@@ -48,11 +48,3 @@ export default function Note() {
     </View>
   )
 }
-
-let array = [
-    {textHeader: "First note", notePreview: "Preview of first note", fileName: "f1"}, 
-    {textHeader: "Second note", notePreview: "Preview of second note", fileName: "f2"}, 
-    {textHeader: "Third note", notePreview: "Preview of third note", fileName: "f3"}
-];
-
-// writeNotePreview(array, curDir);
