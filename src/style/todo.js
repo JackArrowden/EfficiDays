@@ -1,3 +1,5 @@
+import CardContainer from "../components/Todo/cardContainer";
+
 const l_todo = {
     checkBox(color, radius) {
         return {
@@ -6,6 +8,7 @@ const l_todo = {
             borderRadius: radius,
             borderWidth: 2,
             borderColor: color,
+            backgroundColor: color,
         }
     },
 
@@ -14,19 +17,37 @@ const l_todo = {
     },
 
     card: {
+        "borderRadius": 10,
         "flexDirection": "row",
         "alignSelf": "center",
         "width": "90%",
+        "padding": 15,
+        "marginTop": 10,
+        "marginBottom": 10,
+    },
+
+    CardContainer: {
+        "borderTopLeftRadius": 10,
+        "borderTopRightRadius": 10,
+        "marginTop": 200,
+        "overflow": "scroll",
+        "padding": 10,
+    },
+
+    bg_white: {
+      "backgroundColor": "#FFFFFF"
     },
 
     cardContent: {
         "flexDirection": "column",
         "paddingLeft": 10,
+        "gap": 10,
     },
 
     cardTitle: {
         "fontSize": 20,
         "fontWeight": "bold",
+        "lineHeight": 20,
     },
 
     cardDescription: {

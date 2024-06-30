@@ -14,7 +14,7 @@ export default function Todo() {
   const inWidth = width - 48; 
   console.log(inHeight, inWidth)
   return (
-    <View style={[global.f_col, global.container, global.self, global.setHW(inHeight, width)]}>
+    <View style={[global.f_col, global.container, global.alignItems_center, global.self, global.setHW(inHeight, width)]}>
       <CardContainer width={inWidth} height={inHeight} path={""} />
     </View>
   )
