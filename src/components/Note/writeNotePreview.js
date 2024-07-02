@@ -3,7 +3,7 @@ import writeF from "./writeFile";
 export default async function writeNotePreview(objects, filePath) {
     let stringData = "";
 
-    numNotes = objects.length;
+    const numNotes = objects.length;
     const lenNumNotes = (numNotes.toString()).length;
 
     stringData += lenNumNotes.toString() + numNotes;

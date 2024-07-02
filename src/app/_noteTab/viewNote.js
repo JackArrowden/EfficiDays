@@ -1,30 +1,36 @@
-import { View, Text, Image, TextInput, TouchableOpacity, Dimensions, SafeAreaView } from "react-native";
-import React from "react";
-import { StatusBar } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity, Dimensions, ScrollView } from "react-native";
+import React, { useRef, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import global from "../../style/global"
-import l_login from "../../style/loginRegister";
-import InputTxt from "../../components/LogIn/inputTxt";
+import HeaderDetail from "../../components/Note/headerDetail";
+import NoteSegment from "../../components/Note/noteSegment";
+import VerticalLine from "../../components/Note/verticalLine";
+
+import global from "../../style/global";
+import l_note from "../../style/note";
 
 export default function ViewNote() {
   const navigation = useNavigation();
   const { width, height } = Dimensions.get('screen');
-  const inputHeight = height / 8 * 0.8;
-  
-  return (
-    <View style={[global.f, global.container, global.self, global.setHW(height, width)]}>
-      <View style={[global.f, global.container, global.f_col, global.setHW(height / 4 * 3, width)]}>
 
-        <View style={[global.f, l_login.global, global.mt_48]}>
-          <TouchableOpacity 
-            style={[global.container, l_login.self, l_login.setHW(height / 16, width / 3), l_login.btn1]}
-            onPress={()=>navigation.goBack()}
-          >
-            <Text style={[l_login.self, l_login.txt1]}>New note</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+  const [isDisplayed, setDisplayed] = useState(false);
+
+  const handleFocus = () => {
+    setDisplayed(true);
+  }
+
+  const textInputRef = useRef(null);
+
+  return (
+    <View style={[global.f, global.center, global.self, global.setHW(height, width), l_note.pRel]}>
+      <HeaderDetail width={width} isDisplayed={isDisplayed} setDisplayed={setDisplayed} textInputRef={textInputRef}/>
+
+      <ScrollView style={[l_note.setW('100%'), l_note.setBottom(100), global.p20, l_note.noteList]}>
+        <NoteSegment onFocus={handleFocus}/>
+      </ScrollView>
+
+      <VerticalLine width={width} bottom={80}/>
+      <VerticalLine width={width} bottom={30}/>
     </View>
   );
 }

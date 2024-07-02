@@ -1,4 +1,8 @@
 const l_note = {
+    pRel : {
+        position: 'relative'
+    },
+
     global : {
         marginTop: 4,
         marginBottom: 4,
@@ -20,6 +24,11 @@ const l_note = {
     line : {
         width: 1,
         height: '70%',
+        backgroundColor: '#bbb',
+    },
+
+    verticalLine : {
+        height: 1,
         backgroundColor: '#bbb',
     },
 
@@ -45,6 +54,15 @@ const l_note = {
     wh_28 : {
         width: 28, 
         height: 28
+    },
+    wh_36 : {
+        width: 36, 
+        height: 36
+    },
+
+    noteList : {
+        position: 'absolute',
+        top: 80,
     },
 
     noteHeader : {
@@ -87,9 +105,39 @@ const l_note = {
         right: -5
     },
 
+    backArrow : {
+        position: 'absolute',
+        top: 40,
+        left: 30
+    },
+
+    doneBtn : {
+        color: '#666',
+        fontSize: 16,
+    },
+
+    txtNote : {
+        marginLeft: 12,
+        color: '#777',
+        fontSize: 16
+    },
+
+    txtMain : {
+        color: '#666',
+        backgroundColor: '#FCFCFC',
+        fontSize: 18
+    },
+
     setW(width) {
         return {
             width: width
+        };
+    },
+
+    setBottom(btm) {
+        return {
+            position: 'absolute',
+            bottom: btm
         };
     },
 

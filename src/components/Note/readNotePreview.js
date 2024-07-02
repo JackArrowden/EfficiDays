@@ -3,6 +3,9 @@ import readF from "./readFile";
 export default async function readNotePreview(filePath) {
     let objects = [];
     const stringData = await readF(filePath);
+    if (stringData == null) {
+        return objects
+    }
     
     const lenNumNotes = parseInt(stringData[0], 10);
     let readPointer = lenNumNotes + 1;

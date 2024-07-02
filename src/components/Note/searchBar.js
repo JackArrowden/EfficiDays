@@ -26,7 +26,7 @@ const SearchBar = ({
             </View>
 
             <View style={[global.f4, global.container]}>
-                <TextInput placeholder={text}></TextInput>
+                <TextInput placeholder={text} returnKeyType='search'></TextInput>
             </View>
         </View>
     );
