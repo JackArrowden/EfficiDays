@@ -15,7 +15,6 @@ const NoteSegment = ({
     onFocus,
     onBlur,
     textInputRef,
-    focusDefault = false,
     noteDetails,
     setNoteDetails,
     style,
@@ -30,12 +29,8 @@ const NoteSegment = ({
     }, [changed]);
 
     const navigation = useNavigation();
-    const curSegment = useRef();
+    const curSegment = useRef(null);
     console.log("Index", index);
-
-    // if (focusDefault) {
-    //     curSegment.current.focus();
-    // }
 
     const [numLine, setNumLine] = useState(0);
     const [text, setText] = useState(content);
@@ -51,9 +46,7 @@ const NoteSegment = ({
                 setText(noteDetailInfor.data[index].content);
 
                 noteDetailInfor.data.splice(index + 1, 0, {content: "", style: 2});
-                console.log("data2: ", noteDetailInfor.data);
 
-                noteDetailInfor.isRefresh = true;
                 setNoteDetails(noteDetailInfor.data);
                 textInputRef.current.blur();
                 return;
@@ -75,9 +68,10 @@ const NoteSegment = ({
     
     return (
         <TextInput 
-            ref={textInputRef}
+            autoFocus={true}
+            ref={textInputRef !== undefined ? textInputRef : curSegment}
             returnKeyType="next"
-            placeholder={style == l_note.segmentTitle ? 'Enter your note' : undefined}
+            placeholder={index == 0 ? 'Enter your note' : undefined}
             multiline={true} 
             style={[global.setHW(sHeight, '100%'), l_note.txtMain, style]}
             onFocus={onFocus ? onFocus : undefined}
@@ -94,13 +88,14 @@ const NoteSegment = ({
                         noteDetailInfor.data[index].content = newText;
                     } else if (text.length > 0 && newText.length < text.length && newText[0] != text[0]) {
                         const len = noteDetailInfor.data[index - 1].content.length;
-                        noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content.substring(0, len - 1);
-                        noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content;
+                        noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content.substring(0, len);
+                        noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content.substring(1, len);
                         noteDetailInfor.data.splice(index, 1);
-    
-                        noteDetailInfor.isRefresh = true;
-                        textInputRef.current.blur();
+                        console.log(noteDetailInfor.data);
                         setNoteDetails(noteDetailInfor.data);
+
+                        textInputRef.current.blur();
+                        return;
                     } else {
                         setText(newText);
                         noteDetailInfor.data[index].content = newText;

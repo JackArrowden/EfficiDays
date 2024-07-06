@@ -69,14 +69,6 @@ export default function ViewNote() {
     textInputRef.current.focus();
   }
 
-  if (noteDetailInfor.isRefresh) {
-    setTimeout(() => {
-      // refs.current[components.length].focus();
-      textInputRef.current.focus();
-      noteDetailInfor.isRefresh = false;
-    }, 100);
-  }
-
   return (
     <View style={[global.f, global.center, global.self, global.setHW(height, width), l_note.pRel]}>
       <HeaderDetail width={width} isDisplayed={isDisplayed} setDisplayed={setDisplayed}/>
@@ -90,7 +82,7 @@ export default function ViewNote() {
               index={index}
               content={item.content} 
               style={listStyles[item.style]} 
-              textInputRef={textInputRef} 
+              textInputRef={index === noteDetailInfor.data.length - 1 ? textInputRef : undefined} 
               onFocus={handleFocus} 
               onBlur={handleBlur}
               noteDetails={noteDetails}
