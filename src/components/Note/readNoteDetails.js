@@ -27,7 +27,7 @@ export default async function readNoteDetails(filePath) {
 
         numLetters = parseInt(stringData.substring(readPointer, readPointer + lenNumLetters), 10);
         readPointer += lenNumLetters;
-        let segmentStyle = stringData.substring(readPointer, readPointer + numLetters);
+        let segmentStyle = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
         readPointer += numLetters;
 
         // Push to object

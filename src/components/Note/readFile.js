@@ -4,7 +4,7 @@ import checkFileExistence from './checkFileExistence';
 
 export default async function readF(filePath) {
     try {
-        if (checkFileExistence(filePath)) {
+        if (await checkFileExistence(filePath)) {
             const base64Data = await FileSystem.readAsStringAsync(filePath, {
                 encoding: FileSystem.EncodingType.Base64,
             });

@@ -122,10 +122,28 @@ const l_note = {
         fontSize: 16
     },
 
+    self : {
+        backgroundColor: '#fff'
+    },
+
     txtMain : {
+        paddingLeft: 10,
+        paddingRight: 10,
         color: '#666',
-        backgroundColor: '#FCFCFC',
-        fontSize: 18
+        fontSize: 18,
+        lineHeight: -10
+    },
+
+    segmentTitle : {
+        color: '#bbb'
+    },
+
+    segmentType1 : {
+        backgroundColor: '#bbb'
+    },
+
+    segmentType2 : {
+        backgroundColor: '#ddd'
     },
 
     setW(width) {

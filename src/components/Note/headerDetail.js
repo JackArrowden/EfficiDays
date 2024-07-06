@@ -4,21 +4,19 @@ import { useNavigation } from '@react-navigation/native';
 
 import global from '../../style/global';
 import l_note from '../../style/note';
+import { listNote, saveListNote } from '../../data/notes/listNote';
+import { isNewFile } from '../../data/noteDir';
 
 const HeaderDetail = ({
     width,
     textLeft = "Note",
     textRight = "Done",
     isDisplayed = false,
-    setDisplayed,
-    textInputRef,
+    setDisplayed
 }) => {
     const navigation = useNavigation();
 
     const handleBlurTextInput = () => {
-        if (textInputRef.current) {
-          textInputRef.current.blur();
-        }
         Keyboard.dismiss();
         setDisplayed(false);
     };
@@ -27,7 +25,13 @@ const HeaderDetail = ({
         <View style={[global.f_row, global.center, global.spaceBtw, l_note.setW(width - 60), l_note.backArrow]}>
             <TouchableOpacity 
                 style={[global.center, global.f_row, global.container]}
-                onPress={()=>navigation.goBack()}
+                onPress={() => {
+                    if (isNewFile.header.trim() === '') {
+                        listNote.data.pop();
+                    }
+                    saveListNote();
+                    navigation.goBack()
+                }}
             >
                 <Image
                     source={require('../../assets/icon/note/arrowLeft2.png')}

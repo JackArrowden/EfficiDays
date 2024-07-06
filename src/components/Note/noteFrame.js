@@ -5,10 +5,13 @@ import { useNavigation } from '@react-navigation/native';
 import global from '../../style/global';
 import l_note from '../../style/note';
 
+import { noteFile, updateFileDir, isNewFile } from '../../data/noteDir';
+
 const NoteFrame = ({
     height = 688, 
     textHeader = "Your first note",
     notePreview = "Details of your first note...",
+    fileName = "",
     nav = "",
 }) => {
     const navigation = useNavigation();
@@ -21,7 +24,12 @@ const NoteFrame = ({
 
             <TouchableOpacity 
                 style={[global.f_row, global.f0_6, l_note.notePreview]}
-                onPress={()=>navigation.navigate(nav)}
+                onPress={()=>{
+                    noteFile.fileName = fileName;
+                    isNewFile.new = false;
+                    updateFileDir();
+                    navigation.navigate(nav)
+                }}
             >
                 <Text style={[l_note.noteText2]}>{notePreview}</Text>
             </TouchableOpacity>

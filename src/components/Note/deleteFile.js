@@ -1,11 +1,11 @@
 import * as FileSystem from 'expo-file-system';
+import checkFileExistence from './checkFileExistence';
 
-export default async function deleteFile(relativePath) {
+export default async function deleteFile(filePath) {
     try {
-        const absolutePath = `${FileSystem.documentDirectory}${relativePath}`;
-        const fileInfo = await FileSystem.getInfoAsync(absolutePath);
-        if (fileInfo.exists) {
-            await FileSystem.deleteAsync(absolutePath);
+        const absolutePath = `${FileSystem.documentDirectory}${filePath}`;
+        if (await checkFileExistence(filePath)) {
+            await FileSystem.deleteAsync(filePath);
             console.log('File deleted successfully.');
         } else {
             console.log('File does not exist.');
@@ -14,3 +14,13 @@ export default async function deleteFile(relativePath) {
         console.error('Error deleting file:', error);
     }
 };
+
+//////
+// const [isDeleted, setDeleted] = useState(true);
+// useEffect(() => {
+//     if (isDeleted) {
+//         deleteFile(curDir);
+//         setDeleted(false);
+//     }
+// }, [isDeleted]);
+/////
