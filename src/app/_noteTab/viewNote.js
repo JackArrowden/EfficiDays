@@ -64,11 +64,36 @@ export default function ViewNote() {
   }
 
   const textInputRef = useRef(null);
+  const curSegment = useRef(null);
 
   const handlePress = () => {
     textInputRef.current.focus();
   }
 
+  const isDeleted = () => {  
+    setNoteDetails(noteDetailInfor.data);
+
+    setTimeout(() => {
+      if (noteDetailInfor.data.length > 0 && noteDetailInfor.id == noteDetailInfor.data.length) {
+        textInputRef.current.focus();
+      } else {
+        curSegment.current.focus();
+      }
+    }, 100);
+
+    setTimeout(() => {
+      setNoteDetails(noteDetailInfor.data);
+    }, 100);
+  } 
+
+  const updatePrev = (id) => {
+    setDisplayed((data) =>
+      data.map((item) =>
+        item.id === id ? { ...item} : item
+      )
+    );
+  };
+  
   return (
     <View style={[global.f, global.center, global.self, global.setHW(height, width), l_note.pRel]}>
       <HeaderDetail width={width} isDisplayed={isDisplayed} setDisplayed={setDisplayed}/>
@@ -80,13 +105,14 @@ export default function ViewNote() {
           renderItem={({item, index}) => (
             <NoteSegment 
               index={index}
-              content={item.content} 
+              content={noteDetailInfor.data[index].content} 
               style={listStyles[item.style]} 
-              textInputRef={index === noteDetailInfor.data.length - 1 ? textInputRef : undefined} 
+              textInputRef={index === noteDetailInfor.data.length - 1 ? textInputRef : (noteDetailInfor.id > 0 && noteDetailInfor.id - 1 === index ? curSegment : undefined)} 
               onFocus={handleFocus} 
               onBlur={handleBlur}
               noteDetails={noteDetails}
               setNoteDetails={setNoteDetails}
+              isDeleted={isDeleted}
             />
           )}
         />

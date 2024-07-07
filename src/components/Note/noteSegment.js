@@ -17,25 +17,33 @@ const NoteSegment = ({
     textInputRef,
     noteDetails,
     setNoteDetails,
+    isDeleted = Function,
+    updatePrev = Function,
     style,
     isTodoTask = false // If it's true, display a todo task instead of a textinput
 }) => {
     const [changed, setChanged] = useState(true);
+    const navigation = useNavigation();
+    const curSegment = useRef(null);
+    
+    const [numLine, setNumLine] = useState(0);
+    const [text, setText] = useState(noteDetailInfor.data[index].content);
+    const [sHeight, setSHeight] = useState(height);
+console.log(text, noteDetailInfor.data, index);
+    if (noteDetailInfor.reset == index) {
+        console.log(noteDetailInfor.data[index].content, noteDetailInfor.reset);
+        setText(noteDetailInfor.data[index].content);
+        noteDetailInfor.reset += 1;
+    }
+
     useEffect(() => {
-        if (changed && style == l_note.segmentTitle) {
+        if (changed && index == 0) {
             isNewFile.header = "";
             setChanged(false);
         }
     }, [changed]);
+    
 
-    const navigation = useNavigation();
-    const curSegment = useRef(null);
-    console.log("Index", index);
-
-    const [numLine, setNumLine] = useState(0);
-    const [text, setText] = useState(content);
-    const [sHeight, setSHeight] = useState(height);
-  
     const handleKeyPress = ({ nativeEvent }) => {
         if (nativeEvent.key === 'Enter' || nativeEvent.key === 'Return') {
             if (text.trim() !== '') {
@@ -48,14 +56,16 @@ const NoteSegment = ({
                 noteDetailInfor.data.splice(index + 1, 0, {content: "", style: 2});
 
                 setNoteDetails(noteDetailInfor.data);
-                textInputRef.current.blur();
+                if (textInputRef !== undefined) textInputRef.current.blur();
+                else curSegment.current.blur();
+
                 return;
             } else {
                 setNumLine(numLine + 1);
             }
-            console.log(numLine)
         }
         if (nativeEvent.key === 'Backspace' && text.endsWith('\n')) {
+            // noteDetailInfor.stopOverride = true;
             if (numLine === 1) {
                 console.log("Hello")
                 setNumLine(numLine - 1);
@@ -83,18 +93,22 @@ const NoteSegment = ({
                 } else {
                     if (index == 0) {
                         isNewFile.header = newText;
-                        console.log("Haha override!", newText);
                         setText(newText);
                         noteDetailInfor.data[index].content = newText;
                     } else if (text.length > 0 && newText.length < text.length && newText[0] != text[0]) {
-                        const len = noteDetailInfor.data[index - 1].content.length;
+                        let len = noteDetailInfor.data[index - 1].content.length;
                         noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content.substring(0, len);
+                        
+                        len = noteDetailInfor.data[index].content.length;
                         noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content.substring(1, len);
-                        noteDetailInfor.data.splice(index, 1);
-                        console.log(noteDetailInfor.data);
-                        setNoteDetails(noteDetailInfor.data);
 
-                        textInputRef.current.blur();
+                        noteDetailInfor.data.splice(index, 1);
+
+                        noteDetailInfor.id = index;
+                        if (textInputRef !== undefined) textInputRef.current.blur();
+                        else curSegment.current.blur();
+                        isDeleted();
+                        noteDetailInfor.reset = 0;
                         return;
                     } else {
                         setText(newText);
@@ -103,8 +117,26 @@ const NoteSegment = ({
                 }
             })}
             onKeyPress={handleKeyPress}
-            onContentSizeChange={() => {
-                setSHeight(height * (numLine + 1));
+            onContentSizeChange={(e) => {
+                console.log("Ủa không change nữa hả?");
+                console.log("Height", e.nativeEvent.contentSize.height);
+                // if (textInputRef !== undefined) {
+                //     textInputRef.current.measure((x, y, width, h, pageX, pageY) => {
+                //         setSHeight(height * (h + 1));
+                //         console.log("Height", h);
+                //     });
+                // }
+                // else {
+                //     curSegment.current.measure((x, y, width, h, pageX, pageY) => {
+                //         setSHeight(height * (h + 1));
+                //         console.log("Height", h);
+                //     });
+                // }
+                
+                // setSHeight(e.nativeEvent.contentSize.height);
+                console.log("Ủa là sao mắ");
+                setSHeight(height * (e.nativeEvent.contentSize.height / 65 * 3));
+                // setSHeight(height * (numLine + 1));
             }}
             scrollEnabled={false}
         />
