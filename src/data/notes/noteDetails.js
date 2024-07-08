@@ -4,9 +4,12 @@ import { fileDir } from "../noteDir";
 
 export const noteDetailInfor = {
     data: [],
-    id: 0,
+    id: -1,
+    isAddNew: false,
     stopOverride: false,
-    reset: 0 // When this variable equal the number of segments, the setText function will be stopped
+    reset: 0, // When this variable equal the number of segments, the setText function will be stopped
+    update: true,
+    autoFocus: true
 };
 
 export function getNoteDetailInfor(data) {

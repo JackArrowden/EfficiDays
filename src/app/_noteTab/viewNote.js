@@ -57,6 +57,7 @@ export default function ViewNote() {
 
   const handleFocus = () => {
     setDisplayed(true);
+    noteDetailInfor.autoFocus = false;
   }
 
   const handleBlur = () => {
@@ -64,25 +65,35 @@ export default function ViewNote() {
   }
 
   const textInputRef = useRef(null);
-  const curSegment = useRef(null);
+  const delSegment = useRef(null);
+  const addSegment = useRef(null);
 
   const handlePress = () => {
     textInputRef.current.focus();
   }
 
+  const isAdded = () => {
+    console.log("???", noteDetailInfor.id);
+    setTimeout(() => {
+      if (noteDetailInfor.data.length > 0 && noteDetailInfor.id + 1 == noteDetailInfor.data.length - 1) {
+        textInputRef.current.focus();
+      } else {
+        addSegment.current.focus();
+      }
+      
+    }, 100);
+  }
+
   const isDeleted = () => {  
+    console.log("jztr", noteDetailInfor.data);
     setNoteDetails(noteDetailInfor.data);
 
     setTimeout(() => {
       if (noteDetailInfor.data.length > 0 && noteDetailInfor.id == noteDetailInfor.data.length) {
         textInputRef.current.focus();
       } else {
-        curSegment.current.focus();
+        delSegment.current.focus();
       }
-    }, 100);
-
-    setTimeout(() => {
-      setNoteDetails(noteDetailInfor.data);
     }, 100);
   } 
 
@@ -93,6 +104,7 @@ export default function ViewNote() {
       )
     );
   };
+  console.log("Giờ t log ngay nè: ", noteDetails);
   
   return (
     <View style={[global.f, global.center, global.self, global.setHW(height, width), l_note.pRel]}>
@@ -107,12 +119,17 @@ export default function ViewNote() {
               index={index}
               content={noteDetailInfor.data[index].content} 
               style={listStyles[item.style]} 
-              textInputRef={index === noteDetailInfor.data.length - 1 ? textInputRef : (noteDetailInfor.id > 0 && noteDetailInfor.id - 1 === index ? curSegment : undefined)} 
+              textInputRef={
+                index === noteDetailInfor.data.length - 1 ? textInputRef : 
+                  ((noteDetailInfor.isAddNew && noteDetailInfor.id + 1 === index) ? addSegment : 
+                  ((!noteDetailInfor.isAddNew && noteDetailInfor.id > 0 && noteDetailInfor.id - 1 === index) ? delSegment : undefined))
+              } 
               onFocus={handleFocus} 
               onBlur={handleBlur}
               noteDetails={noteDetails}
               setNoteDetails={setNoteDetails}
               isDeleted={isDeleted}
+              isAdded={isAdded}
             />
           )}
         />

@@ -18,16 +18,17 @@ const NoteSegment = ({
     noteDetails,
     setNoteDetails,
     isDeleted = Function,
-    updatePrev = Function,
+    isAdded = Function,
     style,
     isTodoTask = false // If it's true, display a todo task instead of a textinput
 }) => {
+    console.log("Index ", index);
     const [changed, setChanged] = useState(true);
     const navigation = useNavigation();
     const curSegment = useRef(null);
     
     const [numLine, setNumLine] = useState(0);
-    const [text, setText] = useState(noteDetailInfor.data[index].content);
+    const [text, setText] = useState("");
     const [sHeight, setSHeight] = useState(height);
 console.log(text, noteDetailInfor.data, index);
     if (noteDetailInfor.reset == index) {
@@ -52,12 +53,18 @@ console.log(text, noteDetailInfor.data, index);
                 const len = noteDetailInfor.data[index].content.length;
                 noteDetailInfor.data[index].content = noteDetailInfor.data[index].content.substring(0, len);
                 setText(noteDetailInfor.data[index].content);
-
+                
                 noteDetailInfor.data.splice(index + 1, 0, {content: "", style: 2});
+
+                noteDetailInfor.id = index;
+                noteDetailInfor.isAddNew = true;
 
                 setNoteDetails(noteDetailInfor.data);
                 if (textInputRef !== undefined) textInputRef.current.blur();
                 else curSegment.current.blur();
+
+                isAdded();
+                noteDetailInfor.reset = 0;
 
                 return;
             } else {
@@ -78,7 +85,7 @@ console.log(text, noteDetailInfor.data, index);
     
     return (
         <TextInput 
-            autoFocus={true}
+            autoFocus={index == 0 && noteDetailInfor.autoFocus ? true : false}
             ref={textInputRef !== undefined ? textInputRef : curSegment}
             returnKeyType="next"
             placeholder={index == 0 ? 'Enter your note' : undefined}
@@ -86,7 +93,7 @@ console.log(text, noteDetailInfor.data, index);
             style={[global.setHW(sHeight, '100%'), l_note.txtMain, style]}
             onFocus={onFocus ? onFocus : undefined}
             onBlur={onBlur ? onBlur : undefined}
-            value={text}
+            value={noteDetailInfor.data[index].content}
             onChangeText={(newText => {
                 if (noteDetailInfor.stopOverride) {
                     noteDetailInfor.stopOverride = false;
@@ -109,17 +116,22 @@ console.log(text, noteDetailInfor.data, index);
                         else curSegment.current.blur();
                         isDeleted();
                         noteDetailInfor.reset = 0;
+                        noteDetailInfor.update = false;
+                        noteDetailInfor.isAddNew = false;
                         return;
                     } else {
-                        setText(newText);
-                        noteDetailInfor.data[index].content = newText;
+                        if (noteDetailInfor.update) {
+                            setText(newText);
+                            noteDetailInfor.data[index].content = newText;
+                        } else {
+                            noteDetailInfor.update = true;
+                        }
                     }
                 }
             })}
             onKeyPress={handleKeyPress}
             onContentSizeChange={(e) => {
-                console.log("Ủa không change nữa hả?");
-                console.log("Height", e.nativeEvent.contentSize.height);
+                // console.log("Height", e.nativeEvent.contentSize.height);
                 // if (textInputRef !== undefined) {
                 //     textInputRef.current.measure((x, y, width, h, pageX, pageY) => {
                 //         setSHeight(height * (h + 1));
@@ -134,7 +146,6 @@ console.log(text, noteDetailInfor.data, index);
                 // }
                 
                 // setSHeight(e.nativeEvent.contentSize.height);
-                console.log("Ủa là sao mắ");
                 setSHeight(height * (e.nativeEvent.contentSize.height / 65 * 3));
                 // setSHeight(height * (numLine + 1));
             }}
