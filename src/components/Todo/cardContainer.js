@@ -72,7 +72,7 @@ const CardContainer = ({width, height, path}) => {
             data={getCard(path)}
             renderItem={({item}) => (
                 <View style={[global.f_col, l_todo.card, l_todo.bg_white, global.setHW(cardheight, cardwidth)]}>
-                    <CheckBox color={"#BFF6C3"} radius = {"10"}></CheckBox>
+                    <CheckBox color={"#BFF6C3"} radius = {10}></CheckBox>
                     <View style={[l_todo.cardContent]}>
                         <Text style={[l_todo.cardTitle]}>{item.title}</Text>
                         <Text style={[l_todo.cardDescription]}>{item.description}</Text>

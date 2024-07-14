@@ -11,7 +11,7 @@ const l_todo = {
     },
 
     bg_darkgreen: {
-      "backgroundColor": "#BFF6C3" 
+        backgroundColor: "#BFF6C3" 
     },
 
     card: {
