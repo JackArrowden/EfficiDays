@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import global from '../../style/global';
 import l_note from '../../style/note';
 
-import { isNewFile } from '../../data/noteDir';
+import { isNewFile, noteFile, updateFileDir } from '../../data/noteDir';
 import { listNote, getNotePrevs } from '../../data/notes/listNote';
 
 const AddNoteBtn = ({
@@ -24,6 +24,9 @@ const AddNoteBtn = ({
             onPress={()=>{
                 getNotePrevs(data); // listNote.getNotePrevs
                 listNote.data.push({textHeader: "", notePreview: "", fileName: "f" + fileIndex.toString()});
+                noteFile.fileName = "f" + fileIndex.toString();
+                updateFileDir();
+                console.log("Notedir: ", noteFile.fileName)
                 setFileIndex(fileIndex + 1);
                 isNewFile.new = true;
                 navigation.navigate(nav)

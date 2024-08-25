@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import global from "../style/global"
 import l_login from "../style/loginRegister";
 import InputTxt from "../components/LogIn/inputTxt";
+import deleteFile from "../components/Note/deleteFile";
+import { fileIndex, curDir } from "../data/noteDir";
 
 export default function LogIn() {
   const navigation = useNavigation();

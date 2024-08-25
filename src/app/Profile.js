@@ -20,7 +20,7 @@ export default function Profile() {
       <In4Frame height={inHeight} type="Password" preView="********" namePic="password2" />
       <In4Frame height={inHeight} type="Update data to cloud" preView="Sync your data" namePic="cloud2"/>
       <In4Frame height={inHeight} type="Delete account" preView="Permanently delete your account" namePic="delete2"/>
-      <In4Frame height={inHeight} type="Log out" preView="Log out from your account" namePic="logout2" nav="Login"/>
+      <In4Frame height={inHeight} type="Log out" preView="Log out of your account" namePic="logout2" nav="Login"/>
     </View>
   )
 }

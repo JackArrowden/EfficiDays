@@ -6,6 +6,7 @@ import global from '../../style/global';
 import l_note from '../../style/note';
 
 import { noteFile, updateFileDir, isNewFile } from '../../data/noteDir';
+import { listNote } from '../../data/notes/listNote';
 
 const NoteFrame = ({
     height = 688, 
@@ -29,6 +30,7 @@ const NoteFrame = ({
                     isNewFile.new = false;
                     updateFileDir();
                     navigation.navigate(nav)
+                    console.log(fileName)
                 }}
             >
                 <Text style={[l_note.noteText2]}>{notePreview}</Text>

@@ -7,7 +7,6 @@ export default async function writeF(data, filePath) {
         await FileSystem.writeAsStringAsync(filePath, stringBuffer.toString('base64'), {
             encoding: FileSystem.EncodingType.Base64,
         });
-        console.log('Successful while writing data to file: ', filePath);
     } catch (error) {
         console.error('Error while writing: ', error);
     }

@@ -37,7 +37,6 @@ export default function Note() {
   }
 
   const getFileId = () => {
-    console.log(fileIndex);
     readFileIndex(fileIndex)
     .then(data => {
       setFileId(data);

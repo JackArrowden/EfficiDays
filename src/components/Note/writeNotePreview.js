@@ -22,7 +22,6 @@ export default async function writeNotePreview(objects, filePath) {
         // Write note file name
         numLetters = (objects[i].fileName).length;
         stringData += numLetters.toString() + objects[i].fileName;
-        console.log(stringData);
     }
 
     await writeF(stringData, filePath);

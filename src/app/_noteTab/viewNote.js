@@ -38,9 +38,9 @@ export default function ViewNote() {
       console.log(fileDir.fileDir);
       readNoteDetails(fileDir.fileDir)
       .then(data => {
+          // console.log(data);
           setIsGetData(true);
           getNoteDetailInfor(data);
-          console.log(data);
           setNoteDetails(data);
         })
     }
@@ -58,6 +58,7 @@ export default function ViewNote() {
   const handleFocus = () => {
     setDisplayed(true);
     noteDetailInfor.autoFocus = false;
+    console.log("Hi???");
   }
 
   const handleBlur = () => {
@@ -73,7 +74,6 @@ export default function ViewNote() {
   }
 
   const isAdded = () => {
-    console.log("???", noteDetailInfor.id);
     setTimeout(() => {
       if (noteDetailInfor.data.length > 0 && noteDetailInfor.id + 1 == noteDetailInfor.data.length - 1) {
         textInputRef.current.focus();
@@ -84,8 +84,7 @@ export default function ViewNote() {
     }, 100);
   }
 
-  const isDeleted = () => {  
-    console.log("jztr", noteDetailInfor.data);
+  const isDeleted = () => {
     setNoteDetails(noteDetailInfor.data);
 
     setTimeout(() => {

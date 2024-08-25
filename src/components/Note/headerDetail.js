@@ -4,8 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 
 import global from '../../style/global';
 import l_note from '../../style/note';
-import { listNote, saveListNote } from '../../data/notes/listNote';
-import { isNewFile } from '../../data/noteDir';
+import { listNote, saveListNote, getIDFile } from '../../data/notes/listNote';
+import { fileIndex, noteFile } from '../../data/noteDir';
+import { noteDetailInfor, saveNoteDetailInfor } from '../../data/notes/noteDetails';
+import { readFileIndex, writeFileIndex } from './readFileIndex';
 
 const HeaderDetail = ({
     width,
@@ -26,8 +28,25 @@ const HeaderDetail = ({
             <TouchableOpacity 
                 style={[global.center, global.f_row, global.container]}
                 onPress={() => {
-                    if (isNewFile.header.trim() === '') {
+                    if (noteDetailInfor.data[0].content.trim() === '') {
                         listNote.data.pop();
+                    } else {
+                        idFile = getIDFile(noteFile.fileName);
+                        console.log("Bug khúc nào z", idFile);
+                        listNote.data[idFile].textHeader = noteDetailInfor.data[0].content.length > 20 ? noteDetailInfor.data[0].content.substring(0, 20) : noteDetailInfor.data[0].content;
+                        listNote.data[idFile].notePreview = noteDetailInfor.data.length > 1 ? 
+                        (noteDetailInfor.data[1].content.length > 40 ? 
+                            noteDetailInfor.data[1].content.substring(0, 40) : noteDetailInfor.data[1].content
+                        ) : "";
+                        let curId = 0;
+                        console.log(fileIndex);
+                        readFileIndex(fileIndex)
+                        .then(data => {
+                            curId = data;
+                            console.log("dataCur:", data);
+                        })
+                        writeFileIndex(readFileIndex(fileIndex) + 1, fileIndex);
+                        saveNoteDetailInfor(); // ??????
                     }
                     saveListNote();
                     navigation.goBack()

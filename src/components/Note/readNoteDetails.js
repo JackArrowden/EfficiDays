@@ -18,7 +18,7 @@ export default async function readNoteDetails(filePath) {
 
         let numLetters = parseInt(stringData.substring(readPointer, readPointer + lenNumLetters), 10);
         readPointer += lenNumLetters;
-        let segmentDetail = stringData.substring(readPointer, readPointer + numLetters);
+        let content = stringData.substring(readPointer, readPointer + numLetters);
         readPointer += numLetters;
 
         // Read segment style
@@ -27,11 +27,11 @@ export default async function readNoteDetails(filePath) {
 
         numLetters = parseInt(stringData.substring(readPointer, readPointer + lenNumLetters), 10);
         readPointer += lenNumLetters;
-        let segmentStyle = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
+        let style = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
         readPointer += numLetters;
 
         // Push to object
-        let item = { segmentDetail, segmentStyle };
+        let item = { content, style };
         objects.push(item);
     }
     return objects;

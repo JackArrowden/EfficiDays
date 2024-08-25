@@ -8,7 +8,14 @@ export async function writeFileIndex(fileIndex, filePath) {
 }
 
 export async function readFileIndex(filePath) {
-    const stringData = await readF(filePath);
+    let stringData = "";
+
+    await readF(filePath)
+    .then(data => {
+        stringData = data;
+        console.log("data:", data)
+    });
+
     if (stringData == null) {
         await writeFileIndex(0, filePath);
         return 0

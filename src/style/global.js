@@ -1,48 +1,50 @@
-const global = {
-  f : {
+import { StyleSheet } from 'react-native';
+
+const global = StyleSheet.create({
+  f: {
     display: 'flex'
   },
 
-  f0_3 : {
+  f0_3: {
     display: 'flex',
     flex: 0.3
   },
 
-  f0_6 : {
+  f0_6: {
     display: 'flex',
     flex: 0.6
   },
 
-  f0_75 : {
+  f0_75: {
     display: 'flex',
     flex: 0.75
   },
 
-  f1 : {
+  f1: {
     display: 'flex',
     flex: 1
   },
 
-  f4 : {
+  f4: {
     display: 'flex',
     flex: 4
   },
 
-  f6 : {
+  f6: {
     display: 'flex',
     flex: 6
   },
 
-  self : { 
-    backgroundColor: '#E0FBE2' 
+  self: {
+    backgroundColor: '#E0FBE2'
   },
 
-  center : {
+  center: {
     justifyContent: 'center',
     alignItems: 'center'
   },
 
-  container : {
+  container: {
     justifyContent: 'center',
   },
 
@@ -50,90 +52,90 @@ const global = {
     alignItems: 'center',
   },
 
-  f_row : {
+  f_row: {
     display: 'flex',
     flexDirection: 'row'
   },
 
-  f_col : {
+  f_col: {
     display: 'flex',
     flexDirection: 'column'
   },
 
-  spaceBtw : {
+  spaceBtw: {
     justifyContent: 'space-between'
   },
 
-  font : {},
+  font: {},
 
-  text : { 
+  text: {
     fontSize: 16,
     textAlign: 'center',
     color: 'green',
     margin: 10,
   },
 
-  imgFrame : {
+  imgFrame: {
     overflow: 'hidden'
   },
 
-  img : {
+  img: {
     zIndex: 10
   },
 
-  mt_16 : {
+  mt_16: {
     marginTop: 16
   },
 
-  mt_32 : {
+  mt_32: {
     marginTop: 32
   },
 
-  mt_48 : {
+  mt_48: {
     marginTop: 48
   },
 
-  mt_80 : {
+  mt_80: {
     marginTop: 80
   },
 
-  mt_96 : {
+  mt_96: {
     marginTop: 96
   },
 
-  mb_16 : {
+  mb_16: {
     marginBottom: 16
   },
 
-  mb_32 : {
+  mb_32: {
     marginBottom: 32
   },
 
-  mb_48 : {
+  mb_48: {
     marginBottom: 48
   },
 
-  mb_96 : {
+  mb_96: {
     marginBottom: 96
   },
 
-  ml_2 : {
+  ml_2: {
     marginLeft: 2
   },
 
-  ml_24 : {
+  ml_24: {
     marginLeft: 24
   },
 
-  p2 : {
+  p2: {
     padding: 2
   },
 
-  p4 : {
+  p4: {
     padding: 4
   },
 
-  p8 : {
+  p8: {
     padding: 8
   },
 
@@ -143,18 +145,15 @@ const global = {
 
   p20: {
     padding: 20
-  }, 
+  },
 
-  bdRds : {
+  bdRds: {
     borderRadius: 12
   },
-
-  setHW(height, width) {
-    return {
-      height: height,
-      width: width
-    };
-  },
-};
+  setHW: (height, width) => ({
+    height: height,
+    width: width
+  })
+});
 
 export default global;

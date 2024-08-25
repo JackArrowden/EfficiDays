@@ -30,6 +30,8 @@ const NoteSegment = ({
     const [numLine, setNumLine] = useState(0);
     const [text, setText] = useState("");
     const [sHeight, setSHeight] = useState(height);
+    const [cursorPosition, setCursorPosition] = useState({ start: 0, end: 0 });
+
 console.log(text, noteDetailInfor.data, index);
     if (noteDetailInfor.reset == index) {
         console.log(noteDetailInfor.data[index].content, noteDetailInfor.reset);
@@ -48,20 +50,36 @@ console.log(text, noteDetailInfor.data, index);
     const handleKeyPress = ({ nativeEvent }) => {
         if (nativeEvent.key === 'Enter' || nativeEvent.key === 'Return') {
             if (text.trim() !== '') {
+                let len = noteDetailInfor.data[index].content.length;
+                // Delete the focused substring
+                noteDetailInfor.data[index].content = noteDetailInfor.data[index].content.substring(0, cursorPosition.start) + noteDetailInfor.data[index].content.substring(cursorPosition.end, len);
+
                 noteDetailInfor.stopOverride = true;
+                len = noteDetailInfor.data[index].content.length;
 
-                const len = noteDetailInfor.data[index].content.length;
-                noteDetailInfor.data[index].content = noteDetailInfor.data[index].content.substring(0, len);
-                setText(noteDetailInfor.data[index].content);
-                
-                noteDetailInfor.data.splice(index + 1, 0, {content: "", style: 2});
+                if (cursorPosition.start == text.length) {
+                    noteDetailInfor.data[index].content = noteDetailInfor.data[index].content.substring(0, len);
+                    setText(noteDetailInfor.data[index].content);
+                    
+                    noteDetailInfor.data.splice(index + 1, 0, {content: "", style: 2});
+                } else {
+                    const nextText = noteDetailInfor.data[index].content.substring(cursorPosition.start, len);
+                    noteDetailInfor.data[index].content = noteDetailInfor.data[index].content.substring(0, cursorPosition.start);
+                    setText(noteDetailInfor.data[index].content);
 
+                    noteDetailInfor.data.splice(index + 1, 0, {content: nextText, style: 2});
+                }
+
+                setCursorPosition({start: 0, end: 0})
+                // setCursorPosition({start: noteDetailInfor.data[index].content.length, end: noteDetailInfor.data[index].content.length})
                 noteDetailInfor.id = index;
                 noteDetailInfor.isAddNew = true;
 
                 setNoteDetails(noteDetailInfor.data);
+
                 if (textInputRef !== undefined) textInputRef.current.blur();
                 else curSegment.current.blur();
+
 
                 isAdded();
                 noteDetailInfor.reset = 0;
@@ -71,18 +89,35 @@ console.log(text, noteDetailInfor.data, index);
                 setNumLine(numLine + 1);
             }
         }
-        if (nativeEvent.key === 'Backspace' && text.endsWith('\n')) {
-            // noteDetailInfor.stopOverride = true;
+        if (nativeEvent.key === 'Backspace') {
+            if (index != 0 && cursorPosition.start === 0) {
+                console.log("Xóa nè");
+                // let len = noteDetailInfor.data[index - 1].content.length;
+                // noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content;
+                
+                noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content;
+
+                noteDetailInfor.data.splice(index, 1);
+
+                noteDetailInfor.id = index;
+                if (textInputRef !== undefined) textInputRef.current.blur();
+                else curSegment.current.blur();
+                isDeleted();
+                noteDetailInfor.reset = 0;
+                noteDetailInfor.update = false;
+                noteDetailInfor.isAddNew = false;
+                return;
+            }
             if (numLine === 1) {
-                console.log("Hello")
-                setNumLine(numLine - 1);
             } else {
-                console.log(numLine)
-                setNumLine(numLine - 1);
             }
         }
     };
-    
+
+    const handleSelectionChange = ({ nativeEvent: { selection } }) => {
+        setCursorPosition(selection);
+    };
+    console.log("Vị trí của t nè, ", cursorPosition);
     return (
         <TextInput 
             autoFocus={index == 0 && noteDetailInfor.autoFocus ? true : false}
@@ -102,23 +137,23 @@ console.log(text, noteDetailInfor.data, index);
                         isNewFile.header = newText;
                         setText(newText);
                         noteDetailInfor.data[index].content = newText;
-                    } else if (text.length > 0 && newText.length < text.length && newText[0] != text[0]) {
-                        let len = noteDetailInfor.data[index - 1].content.length;
-                        noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content.substring(0, len);
+                    // } else if (text.length > 0 && newText.length < text.length && newText[0] != text[0]) {
+                        // let len = noteDetailInfor.data[index - 1].content.length;
+                        // noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content.substring(0, len);
                         
-                        len = noteDetailInfor.data[index].content.length;
-                        noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content.substring(1, len);
+                        // len = noteDetailInfor.data[index].content.length;
+                        // noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content.substring(1, len);
 
-                        noteDetailInfor.data.splice(index, 1);
+                        // noteDetailInfor.data.splice(index, 1);
 
-                        noteDetailInfor.id = index;
-                        if (textInputRef !== undefined) textInputRef.current.blur();
-                        else curSegment.current.blur();
-                        isDeleted();
-                        noteDetailInfor.reset = 0;
-                        noteDetailInfor.update = false;
-                        noteDetailInfor.isAddNew = false;
-                        return;
+                        // noteDetailInfor.id = index;
+                        // if (textInputRef !== undefined) textInputRef.current.blur();
+                        // else curSegment.current.blur();
+                        // isDeleted();
+                        // noteDetailInfor.reset = 0;
+                        // noteDetailInfor.update = false;
+                        // noteDetailInfor.isAddNew = false;
+                        // return;
                     } else {
                         if (noteDetailInfor.update) {
                             setText(newText);
@@ -150,6 +185,7 @@ console.log(text, noteDetailInfor.data, index);
                 // setSHeight(height * (numLine + 1));
             }}
             scrollEnabled={false}
+            onSelectionChange={handleSelectionChange}
         />
     );
 };
