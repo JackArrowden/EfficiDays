@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import global from "../style/global";
 import CountdownTimer from "../components/Learn/CountdownTimer";
 import Stopwatch  from "../components/Learn/Stopwatch";
-import StopwatchButton from "../components/Learn/stopwatchButton";
+import StopwatchButton from "../components/Learn/StopwatchButton";
 
 export default function Learn() {
   const { width, height } = Dimensions.get('screen');
@@ -17,7 +17,7 @@ export default function Learn() {
       </Text>
 
       <View>
-        <StopwatchButton />
+        <Stopwatch />
       </View>
 
     </View>
