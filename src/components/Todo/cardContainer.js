@@ -62,24 +62,26 @@ const getCard = (path) => {
 
 const CardContainer = ({width, height, path}) => {
     //const navigation = useNavigation();
-    let containerwidth = width;
-    let containerheight = height;
+    let containerwidth = width * 1.05;
+    let containerheight = height * 0.7;
     let cardwidth = containerwidth * 0.9;
-    let cardheight = height * 0.12;
+    let cardheight = height * 0.1;
     return (
-        <FlatList
-            style={[global.f_col, l_todo.bg_darkgreen, l_todo.CardContainer, global.setHW(containerheight, containerwidth)]}
-            data={getCard(path)}
-            renderItem={({item}) => (
-                <View style={[global.f_col, l_todo.card, l_todo.bg_white, global.setHW(cardheight, cardwidth)]}>
-                    <CheckBox color={"#BFF6C3"} radius = {10}></CheckBox>
-                    <View style={[l_todo.cardContent]}>
-                        <Text style={[l_todo.cardTitle]}>{item.title}</Text>
-                        <Text style={[l_todo.cardDescription]}>{item.description}</Text>
+        <View style={ [l_todo.CardContainer, l_todo.bg_darkgreen,global.f_col, global.setHW(containerheight, containerwidth)]}>
+            <Text style={ [l_todo.todo_title]}>To-Do List</Text>
+            <FlatList
+                data={getCard(path)}
+                renderItem={({item}) => (
+                    <View style={[global.f_col, l_todo.card, l_todo.bg_white, global.setHW(cardheight, cardwidth)]}>
+                        <CheckBox color={"#BFF6C3"} radius = {10}></CheckBox>
+                        <View style={[l_todo.cardContent]}>
+                            <Text style={[l_todo.cardTitle]}>{item.title}</Text>
+                            <Text style={[l_todo.cardDescription]}>{item.description}</Text>
+                        </View>
                     </View>
-                </View>
-            )}
-        />
+                )}
+            />
+        </View>
     )
 }
 

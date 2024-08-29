@@ -11,8 +11,47 @@ const l_todo = {
     },
 
     bg_darkgreen: {
-        backgroundColor: "#BFF6C3" 
+        backgroundColor: "#BFF6C3"
     },
+
+    todo_title: { 
+        "color": "#666666",
+        "fontSize": 20,
+        "padding": 15,
+        "marginTop": 0,
+        "marginBottom": 10,
+        
+    },
+
+    DateTime: {
+        "color": "#666666",
+        "fontSize": 20,
+        "padding": 15,
+        "textAlign": "left",
+        "alignSelf": "flex-start",
+        "marginTop": 20,
+    },
+    
+    streak: {
+        "color": "#666666",
+        "fontSize": 40,
+        "padding": 5,
+        "backgroundColor": "#BFF6C3",
+        "margin": "auto",
+        "marginTop": 40,
+        "borderRadius": 20,
+    },
+
+    StreakNum: {
+        "color": "#666666",
+        "fontSize": 40,
+        "margin": "auto",
+        "padding": 20,
+        "paddingTop": 0,
+        "paddingBottom": 0,
+        "color": "#666666",
+        "fontWeight": "semibold",
+    },   
 
     card: {
         "borderRadius": 10,
@@ -20,16 +59,16 @@ const l_todo = {
         "alignSelf": "center",
         "width": "90%",
         "padding": 15,
-        "marginTop": 10,
+        "marginTop": 0,
         "marginBottom": 10,
     },
 
     CardContainer: {
-        "borderTopLeftRadius": 10,
-        "borderTopRightRadius": 10,
+        "borderTopLeftRadius": 32,
+        "borderTopRightRadius": 32,
         "marginTop": 200,
         "overflow": "scroll",
-        "padding": 10,
+        "padding": 5,
     },
 
     bg_white: {
@@ -43,12 +82,14 @@ const l_todo = {
     },
 
     cardTitle: {
-        "fontSize": 20,
-        "fontWeight": "bold",
+        "fontSize": 16,
+        "fontWeight": "semibold",
         "lineHeight": 20,
+        "color": "#666666",
     },
 
     cardDescription: {
+        "color": "#888888",
         "fontSize": 15,
     },
 };
