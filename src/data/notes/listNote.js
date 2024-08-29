@@ -4,7 +4,8 @@ import { curDir } from "../noteDir";
 
 export const listNote = {
     data: [],
-    curFile: 0
+    curFile: 0,
+    isReset: false
 };
 
 export function getNotePrevs(data) {
@@ -13,6 +14,7 @@ export function getNotePrevs(data) {
 
 export function saveListNote() {
     writeNotePreview(listNote.data, curDir);
+    listNote.isReset = true
 };
 
 export function getIDFile(filename) {

@@ -1,5 +1,6 @@
 import { View, Dimensions, FlatList } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 
 // Style
 import global from "../style/global";
@@ -13,6 +14,7 @@ import writeNotePreview from "../components/Note/writeNotePreview";
 import { readFileIndex, writeFileIndex } from "../components/Note/readFileIndex";
 import { curDir, fileIndex } from "../data/noteDir";
 import deleteFile from "../components/Note/deleteFile";
+import { listNote } from "../data/notes/listNote";
 
 export default function Note() {
   const { width, height } = Dimensions.get('screen');
@@ -27,6 +29,13 @@ export default function Note() {
       getFileId();
     }
   }, [isGetData]);
+
+  useFocusEffect(() => {
+    if (listNote.isReset) {
+      listNote.isReset = false
+      getNotePrev();
+    }
+  })
 
   const getNotePrev = () => {
     readNotePreview(curDir)
