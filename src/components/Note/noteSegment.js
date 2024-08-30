@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TextInput } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import global from '../../style/global';
 import l_note from '../../style/note';
@@ -22,7 +22,6 @@ const NoteSegment = ({
     style,
     isTodoTask = false // If it's true, display a todo task instead of a textinput
 }) => {
-    console.log("Index ", index);
     const [changed, setChanged] = useState(true);
     const navigation = useNavigation();
     const curSegment = useRef(null);
@@ -31,25 +30,22 @@ const NoteSegment = ({
     const [text, setText] = useState("");
     const [sHeight, setSHeight] = useState(height);
     const [cursorPosition, setCursorPosition] = useState({ start: 0, end: 0 });
-
-console.log(text, noteDetailInfor.data, index);
-    if (noteDetailInfor.reset == index) {
-        console.log(noteDetailInfor.data[index].content, noteDetailInfor.reset);
-        setText(noteDetailInfor.data[index].content);
-        noteDetailInfor.reset += 1;
-    }
-
+    
     useEffect(() => {
         if (changed && index == 0) {
             isNewFile.header = "";
             setChanged(false);
         }
-    }, [changed]);
-    
+
+        if (noteDetailInfor.reset == index) {
+            setText(noteDetailInfor.data[index].content);
+            noteDetailInfor.reset += 1;
+        }
+    }, [changed, noteDetailInfor.reset, index]);
 
     const handleKeyPress = ({ nativeEvent }) => {
-        if (nativeEvent.key === 'Enter' || nativeEvent.key === 'Return') {
-            if (text.trim() !== '') {
+        if (nativeEvent.key == 'Enter' || nativeEvent.key == 'Return') {
+            if (noteDetailInfor.data[index].content.trim() !== '') {
                 let len = noteDetailInfor.data[index].content.length;
                 // Delete the focused substring
                 noteDetailInfor.data[index].content = noteDetailInfor.data[index].content.substring(0, cursorPosition.start) + noteDetailInfor.data[index].content.substring(cursorPosition.end, len);
@@ -77,7 +73,7 @@ console.log(text, noteDetailInfor.data, index);
 
                 setNoteDetails(noteDetailInfor.data);
 
-                if (textInputRef !== undefined) textInputRef.current.blur();
+                if (textInputRef) textInputRef.current.blur();
                 else curSegment.current.blur();
 
 
@@ -89,6 +85,7 @@ console.log(text, noteDetailInfor.data, index);
                 setNumLine(numLine + 1);
             }
         }
+
         if (nativeEvent.key === 'Backspace') {
             if (index != 0 && cursorPosition.start === 0) {
                 console.log("Xóa nè");
@@ -96,18 +93,19 @@ console.log(text, noteDetailInfor.data, index);
                 // noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content;
                 
                 noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content;
-
                 noteDetailInfor.data.splice(index, 1);
 
                 noteDetailInfor.id = index;
-                if (textInputRef !== undefined) textInputRef.current.blur();
+                if (textInputRef) textInputRef.current.blur();
                 else curSegment.current.blur();
+
                 isDeleted();
                 noteDetailInfor.reset = 0;
                 noteDetailInfor.update = false;
                 noteDetailInfor.isAddNew = false;
                 return;
             }
+
             if (numLine === 1) {
             } else {
             }
@@ -118,6 +116,7 @@ console.log(text, noteDetailInfor.data, index);
         setCursorPosition(selection);
     };
     console.log("Vị trí của t nè, ", cursorPosition);
+
     return (
         <TextInput 
             autoFocus={index == 0 && noteDetailInfor.autoFocus ? true : false}
