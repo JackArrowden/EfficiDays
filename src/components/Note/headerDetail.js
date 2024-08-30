@@ -32,21 +32,13 @@ const HeaderDetail = ({
                         listNote.data.pop();
                     } else {
                         idFile = getIDFile(noteFile.fileName);
-                        console.log("Bug khúc nào z", idFile);
                         listNote.data[idFile].textHeader = noteDetailInfor.data[0].content.length > 20 ? noteDetailInfor.data[0].content.substring(0, 20) : noteDetailInfor.data[0].content;
                         listNote.data[idFile].notePreview = noteDetailInfor.data.length > 1 ? 
                         (noteDetailInfor.data[1].content.length > 40 ? 
                             noteDetailInfor.data[1].content.substring(0, 40) : noteDetailInfor.data[1].content
                         ) : "";
-                        let curId = 0;
-                        console.log(fileIndex);
-                        readFileIndex(fileIndex)
-                        .then(data => {
-                            curId = data;
-                            console.log("dataCur:", data);
-                        })
                         writeFileIndex(readFileIndex(fileIndex) + 1, fileIndex);
-                        saveNoteDetailInfor(); // ??????
+                        saveNoteDetailInfor();
                     }
                     saveListNote();
                     navigation.goBack()

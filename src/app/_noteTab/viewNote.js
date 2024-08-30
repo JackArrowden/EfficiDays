@@ -1,7 +1,6 @@
 // Library
 import { View, TouchableOpacity, Dimensions, FlatList } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 
 // Components
 import HeaderDetail from "../../components/Note/headerDetail";
@@ -15,7 +14,6 @@ import listStyles from "../../constants/listSegmentStyles";
 
 // Data functions and variables
 import readNoteDetails from "../../components/Note/readNoteDetails";
-import writeNoteDetails from "../../components/Note/writeNoteDetail";
 import { fileDir, isNewFile } from "../../data/noteDir";
 import { getNoteDetailInfor, noteDetailInfor } from "../../data/notes/noteDetails";
 
@@ -38,7 +36,6 @@ export default function ViewNote() {
       console.log(fileDir.fileDir);
       readNoteDetails(fileDir.fileDir)
       .then(data => {
-          // console.log(data);
           setIsGetData(true);
           getNoteDetailInfor(data);
           setNoteDetails(data);
@@ -58,7 +55,6 @@ export default function ViewNote() {
   const handleFocus = () => {
     setDisplayed(true);
     noteDetailInfor.autoFocus = false;
-    console.log("Hi???");
   }
 
   const handleBlur = () => {

@@ -1,4 +1,3 @@
-import deleteFile from "./deleteFile";
 import readF from "./readFile";
 import writeF from "./writeFile";
 

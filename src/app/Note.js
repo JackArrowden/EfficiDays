@@ -1,5 +1,5 @@
 import { View, Dimensions, FlatList } from "react-native";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
 // Style
@@ -10,10 +10,8 @@ import SearchBar from "../components/Note/searchBar";
 import AddNoteBtn from "../components/Note/addNoteBtn";
 import NoteFrame from "../components/Note/noteFrame";
 import readNotePreview from "../components/Note/readNotePreview";
-import writeNotePreview from "../components/Note/writeNotePreview";
-import { readFileIndex, writeFileIndex } from "../components/Note/readFileIndex";
+import { readFileIndex } from "../components/Note/readFileIndex";
 import { curDir, fileIndex } from "../data/noteDir";
-import deleteFile from "../components/Note/deleteFile";
 import { listNote } from "../data/notes/listNote";
 
 export default function Note() {
@@ -66,6 +64,7 @@ export default function Note() {
             notePreview={item.notePreview} 
             fileName={item.fileName}
             nav="ViewNote"
+            data={notePrev}
           />
         )}
       />

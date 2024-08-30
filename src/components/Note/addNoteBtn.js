@@ -22,7 +22,7 @@ const AddNoteBtn = ({
         <TouchableOpacity 
             style={[global.f_row, global.container, global.setHW(height / 16), global.mb_32]}
             onPress={()=>{
-                getNotePrevs(data); // listNote.getNotePrevs
+                getNotePrevs(data);
                 listNote.data.push({textHeader: "", notePreview: "", fileName: "f" + fileIndex.toString()});
                 noteFile.fileName = "f" + fileIndex.toString();
                 updateFileDir();
