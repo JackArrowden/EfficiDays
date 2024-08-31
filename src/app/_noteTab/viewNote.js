@@ -73,8 +73,10 @@ export default function ViewNote() {
     setTimeout(() => {
       if (noteDetailInfor.data.length > 0 && noteDetailInfor.id + 1 == noteDetailInfor.data.length - 1) {
         textInputRef.current.focus();
+        textInputRef.current.setSelection(0);
       } else {
         addSegment.current.focus();
+        addSegment.current.setSelection(0);
       }
       
     }, 100);

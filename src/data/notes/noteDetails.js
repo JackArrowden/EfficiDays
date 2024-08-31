@@ -9,7 +9,11 @@ export const noteDetailInfor = {
     stopOverride: false,
     reset: 0, // When this variable equal the number of segments, the setText function will be stopped
     update: true,
-    autoFocus: true
+    autoFocus: true,
+    add: false,
+    del: false,
+    idAdd: 0,
+    idDel: 0
 };
 
 export function getNoteDetailInfor(data) {

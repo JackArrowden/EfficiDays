@@ -135,7 +135,7 @@ const l_note = {
     },
 
     segmentTitle : {
-        color: '#bbb'
+        color: '#999'
     },
 
     segmentType1 : {
@@ -143,7 +143,8 @@ const l_note = {
     },
 
     segmentType2 : {
-        backgroundColor: '#ddd'
+        color: '#aaa'
+        // backgroundColor: '#ddd'
     },
 
     setW(width) {

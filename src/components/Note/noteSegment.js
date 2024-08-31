@@ -78,6 +78,8 @@ const NoteSegment = ({
 
 
                 isAdded();
+                noteDetailInfor.add = true;
+                noteDetailInfor.idAdd = index + 1;
                 noteDetailInfor.reset = 0;
 
                 return;
@@ -87,7 +89,7 @@ const NoteSegment = ({
         }
 
         if (nativeEvent.key === 'Backspace') {
-            if (index != 0 && cursorPosition.start === 0) {
+            if (index != 0 && cursorPosition.start == 0) {
                 console.log("Xóa nè");
                 // let len = noteDetailInfor.data[index - 1].content.length;
                 // noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content;
@@ -100,6 +102,9 @@ const NoteSegment = ({
                 else curSegment.current.blur();
 
                 isDeleted();
+                noteDetailInfor.del = true;
+                noteDetailInfor.idDel = index - 1;
+
                 noteDetailInfor.reset = 0;
                 noteDetailInfor.update = false;
                 noteDetailInfor.isAddNew = false;
@@ -114,12 +119,22 @@ const NoteSegment = ({
 
     const handleSelectionChange = ({ nativeEvent: { selection } }) => {
         setCursorPosition(selection);
+        // setCursorPosition({start: noteDetailInfor.data[index].length - 1, end: noteDetailInfor.data[index].length - 1});
+        // console.log(selection, index)
+
+        if (noteDetailInfor.add && noteDetailInfor.idAdd == index) {
+            setCursorPosition({start: 0, end: 0});
+            noteDetailInfor.add = false;
+        }
+        // if (noteDetailInfor.del && noteDetailInfor.idDel == index) {
+        //     noteDetailInfor.del = false;
+        // }
     };
     console.log("Vị trí của t nè, ", cursorPosition);
 
     return (
         <TextInput 
-            autoFocus={index == 0 && noteDetailInfor.autoFocus ? true : false}
+            autoFocus={index == noteDetailInfor.data.length - 1 ? true : false}
             ref={textInputRef !== undefined ? textInputRef : curSegment}
             returnKeyType="next"
             placeholder={index == 0 ? 'Enter your note' : undefined}
