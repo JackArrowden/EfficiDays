@@ -23,13 +23,45 @@ const l_todo = {
         
     },
 
+    TopRow: {
+        "flexDirection": "row",
+        "alignItems": "center",
+        "justifyContent": "space-between",
+    },
+
+    WeekDay: {
+        "color": "#666666",
+        "fontSize": 30,
+    },
+
+    MonthDay: {
+        "marginTop": 14,
+        "color": "#888888",
+        "fontSize": 16,
+    },
+
     DateTime: {
         "color": "#666666",
         "fontSize": 20,
-        "padding": 15,
+        "padding": 10,
         "textAlign": "left",
         "alignSelf": "flex-start",
-        "marginTop": 20,
+        "marginTop": 30,
+        "marginBottom": 10,
+        "marginLeft": 18,
+        "display": "flex",
+        "flexDirection": "row",
+    },
+
+    Notification: {
+        "fontSize": 20,
+        "padding": 10,
+        "textAlign": "right",
+        "alignSelf": "flex-end",
+        "marginTop": -50,
+        "marginRight": 20,
+        "backgroundColor": "#BFF6C3",
+        "borderRadius": 20,
     },
     
     streak: {
@@ -38,7 +70,7 @@ const l_todo = {
         "padding": 5,
         "backgroundColor": "#BFF6C3",
         "margin": "auto",
-        "marginTop": 40,
+        "marginTop": 20,
         "borderRadius": 20,
     },
 
@@ -66,7 +98,6 @@ const l_todo = {
     CardContainer: {
         "borderTopLeftRadius": 32,
         "borderTopRightRadius": 32,
-        "marginTop": 200,
         "overflow": "scroll",
         "padding": 5,
     },
