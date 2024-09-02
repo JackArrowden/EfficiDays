@@ -27,6 +27,12 @@ const l_note = {
         backgroundColor: '#bbb',
     },
 
+    line2 : {
+        width: 1,
+        height: '90%',
+        backgroundColor: '#bbb',
+    },
+
     verticalLine : {
         height: 1,
         backgroundColor: '#bbb',
@@ -93,6 +99,26 @@ const l_note = {
         letterSpacing: 1.4
     },
 
+    btmText1 : {
+        color: '#aaa',
+        fontSize: 14,
+        letterSpacing: 1.4
+    },
+
+    btmText2 : {
+        color: '#888',
+        fontSize: 18,
+        fontWeight: 800,
+        letterSpacing: 1.6
+    },
+
+    btmText3 : {
+        color: '#999',
+        fontSize: 16,
+        fontStyle: 'italic',
+        letterSpacing: 1.5
+    },
+
     circle : {
         borderRadius: 9999,
         backgroundColor: '#B0EBB4',
@@ -144,7 +170,6 @@ const l_note = {
 
     segmentType2 : {
         color: '#aaa'
-        // backgroundColor: '#ddd'
     },
 
     setW(width) {

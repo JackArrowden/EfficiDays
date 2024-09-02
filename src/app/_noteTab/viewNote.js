@@ -1,5 +1,5 @@
 // Library
-import { View, TouchableOpacity, Dimensions, FlatList } from "react-native";
+import { View, TouchableOpacity, Dimensions, FlatList} from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 
 // Components
@@ -16,6 +16,7 @@ import listStyles from "../../constants/listSegmentStyles";
 import readNoteDetails from "../../components/Note/readNoteDetails";
 import { fileDir, isNewFile } from "../../data/noteDir";
 import { getNoteDetailInfor, noteDetailInfor } from "../../data/notes/noteDetails";
+import BtmStyle from "../../components/Note/btmStyle";
 
 export default function ViewNote() {
   const { width, height } = Dimensions.get('screen');
@@ -132,8 +133,7 @@ export default function ViewNote() {
         />
       </TouchableOpacity>
 
-      <VerticalLine width={width} bottom={80}/>
-      <VerticalLine width={width} bottom={30}/>
+      <BtmStyle width={width} bottom={30}/>
     </View>
   );
 }

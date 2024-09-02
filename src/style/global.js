@@ -127,6 +127,11 @@ const global = StyleSheet.create({
     marginLeft: 24
   },
 
+  mlr_5: {
+    marginLeft: 5,
+    marginRight: 5
+  },
+
   p2: {
     padding: 2
   },
