@@ -1,3 +1,5 @@
+import AddTask from "../components/Todo/addTask";
+
 const l_todo = {
     checkBox(color, radius) {
         return {
@@ -83,7 +85,23 @@ const l_todo = {
         "paddingBottom": 0,
         "color": "#666666",
         "fontWeight": "semibold",
-    },   
+    }, 
+    
+    addTask: {
+        "color": "#666666",
+        "fontSize": 20,
+        "padding": 10,
+        "marginTop": 0,
+        "marginBottom": 10,
+        "backgroundColor": "#BFF6C3",
+        "display": "flex",
+        "flexDirection": "row",
+        "borderRadius": 16,
+    },
+
+    taskBtnText: {
+        "color": "#666666",
+    },
 
     card: {
         "borderRadius": 10,

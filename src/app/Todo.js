@@ -7,6 +7,7 @@ import global from "../style/global";
 import CardContainer from "../components/Todo/cardContainer";
 import l_todo from "../style/todo";
 import GetDate from "../components/Todo/getDate";
+import AddTask from "../components/Todo/addTask";
 
 
 
@@ -22,15 +23,17 @@ export default function Todo() {
         <Image
             source={require('../assets/icon/todo/notifications.png')}
             style={{
-                width: 20,
-                height: 20,
-                tintColor: '#388C3B'
-            }}
+              "width": 20,
+              "height": 20,
+              "tintColor": '#388C3B',
+              "zIndex": 1
+          }}
         />
       </TouchableOpacity>
       <View style={[l_todo.streak]}> 
         <Text style={[l_todo.StreakNum]}>20</Text>
       </View>
+      <AddTask />
       <View>
         <CardContainer width={inWidth} height={inHeight} path={""} />
       </View>
