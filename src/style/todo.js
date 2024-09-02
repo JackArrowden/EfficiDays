@@ -1,5 +1,3 @@
-import AddTask from "../components/Todo/addTask";
-
 const l_todo = {
     checkBox(color, radius) {
         return {
