@@ -80,14 +80,14 @@ const CardContainer = ({width, height, path}) => {
     return (
         <View style={ [l_todo.CardContainer, l_todo.bg_darkgreen,global.f_col, global.setHW(containerheight, containerwidth)]}>
             <Text style={ [l_todo.todo_title]}>To-Do List</Text>
-            <FlatList
+            {cards.length != 0 && <FlatList
                 data={cards}
                 renderItem={({ item, index }) => (
                     <View style={[global.f_col, l_todo.card, l_todo.bg_white, global.setHW(cardheight, cardwidth)]}>
-                        <CheckBox 
-                            color={"#BFF6C3"} 
-                            radius={10} 
-                            bool={item.checked} 
+                        <CheckBox
+                            color={"#BFF6C3"}
+                            radius={10}
+                            bool={item.checked}
                             handleChange={() => handleChange(index)} // Ensure index is passed correctly
                         />
                         <View style={[l_todo.cardContent]}>
@@ -96,7 +96,9 @@ const CardContainer = ({width, height, path}) => {
                         </View>
                     </View>
                 )}
-            />
+            />}
+
+            {cards.length == 0 && <Text style={[l_todo.todo_notask]}>You've completed all tasks! Yay!</Text>}
         </View>
     )
 }

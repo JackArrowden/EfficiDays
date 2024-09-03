@@ -156,6 +156,20 @@ const l_todo = {
         "textAlign": "center",
         "marginTop": -3,
     },
+
+    todo_notask: {
+        "color": "#666666",
+        "fontSize": 20,
+        "padding": 15,
+        "marginTop": 0,
+        "marginBottom": 10,
+        "width": "fitContent",
+        "margin": "auto",
+        "textAlign": "center",
+        "backgroundColor": "#fff",
+        "borderRadius": 20,
+        "height": "fitContent",
+    },
 };
 
 export default l_todo;
