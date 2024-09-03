@@ -8,6 +8,7 @@ import CardContainer from "../components/Todo/cardContainer";
 import l_todo from "../style/todo";
 import GetDate from "../components/Todo/getDate";
 import AddTask from "../components/Todo/addTask";
+import DeleteTask from "../components/Todo/deleteTask";
 
 
 
@@ -33,7 +34,10 @@ export default function Todo() {
       <View style={[l_todo.streak]}> 
         <Text style={[l_todo.StreakNum]}>20</Text>
       </View>
-      <AddTask />
+      <View style={[l_todo.add_delete]}>
+        <AddTask />
+        <DeleteTask />
+      </View>
       <View>
         <CardContainer width={inWidth} height={inHeight} path={""} />
       </View>

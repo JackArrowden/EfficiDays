@@ -83,7 +83,15 @@ const l_todo = {
         "paddingBottom": 0,
         "color": "#666666",
         "fontWeight": "semibold",
-    }, 
+    },
+    
+    add_delete: {
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "margin": 10,
+        "gap": 10,
+    },
     
     addTask: {
         "color": "#666666",

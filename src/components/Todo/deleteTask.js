@@ -2,11 +2,11 @@ import { React } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
 import l_todo from "../../style/todo";
 
-const AddTask = () => {
+const DeleteTask = () => {
     return (
         <TouchableOpacity style={[l_todo.addTask]}>
             <Image
-                source={require('../../assets/icon/note/addNote2.png')}
+                source={require('../../assets/icon/todo/trash.png')}
                 style={{
                     "width": 20,
                     "height": 20,
@@ -15,9 +15,9 @@ const AddTask = () => {
                     "marginRight": 5,
                 }}
             ></Image>
-            <Text style={[l_todo.taskBtnText]}>Add Task</Text>
+            <Text style={[l_todo.taskBtnText]}>Delete All</Text>
         </TouchableOpacity>
     );
 }
 
-export default AddTask;
+export default DeleteTask;
