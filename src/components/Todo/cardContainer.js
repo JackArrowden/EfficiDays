@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, FlatList } from 'react-native';
 
 import global from '../../style/global';
@@ -66,14 +66,30 @@ const CardContainer = ({width, height, path}) => {
     let containerheight = height * 0.7;
     let cardwidth = containerwidth * 0.9;
     let cardheight = height * 0.1;
+    const [cards, setCards] = useState(getCard());
+
+    const handleChange = (index) => { 
+        // Ensure the index is valid and within the bounds of the array
+        if (index >= 0 && index < cards.length) {
+            const newCards = [...cards];
+            newCards[index].checked = !newCards[index].checked;
+            setCards(newCards); // Update the state with the modified array
+        }
+    }
+
     return (
         <View style={ [l_todo.CardContainer, l_todo.bg_darkgreen,global.f_col, global.setHW(containerheight, containerwidth)]}>
             <Text style={ [l_todo.todo_title]}>To-Do List</Text>
             <FlatList
-                data={getCard(path)}
-                renderItem={({item}) => (
+                data={cards}
+                renderItem={({ item, index }) => (
                     <View style={[global.f_col, l_todo.card, l_todo.bg_white, global.setHW(cardheight, cardwidth)]}>
-                        <CheckBox color={"#BFF6C3"} radius = {10}></CheckBox>
+                        <CheckBox 
+                            color={"#BFF6C3"} 
+                            radius={10} 
+                            bool={item.checked} 
+                            handleChange={() => handleChange(index)} // Ensure index is passed correctly
+                        />
                         <View style={[l_todo.cardContent]}>
                             <Text style={[l_todo.cardTitle]}>{item.title}</Text>
                             <Text style={[l_todo.cardDescription]}>{item.description}</Text>

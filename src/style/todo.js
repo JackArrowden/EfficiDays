@@ -149,6 +149,13 @@ const l_todo = {
         "color": "#888888",
         "fontSize": 15,
     },
+
+    checkBoxText: {
+        "color": "#000000",
+        "fontSize": 20,
+        "textAlign": "center",
+        "marginTop": -3,
+    },
 };
 
 export default l_todo;
