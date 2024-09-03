@@ -12,7 +12,7 @@ const NoteSegment = ({
     index,
     content = "",
     height = 26,
-    onFocus,
+    onFocus = Function,
     onBlur,
     textInputRef,
     noteDetails,
@@ -132,6 +132,11 @@ const NoteSegment = ({
     };
     console.log("Vị trí của t nè, ", cursorPosition);
 
+    const handleFocus = ({}) => {
+        noteDetailInfor.curSegment = index;
+        onFocus();
+    };
+
     return (
         <TextInput 
             autoFocus={index == noteDetailInfor.data.length - 1 ? true : false}
@@ -140,7 +145,7 @@ const NoteSegment = ({
             placeholder={index == 0 ? 'Enter your note' : undefined}
             multiline={true} 
             style={[global.setHW(sHeight, '100%'), l_note.txtMain, style]}
-            onFocus={onFocus ? onFocus : undefined}
+            onFocus={onFocus ? handleFocus : undefined}
             onBlur={onBlur ? onBlur : undefined}
             value={noteDetailInfor.data[index].content}
             onChangeText={(newText => {
@@ -151,23 +156,6 @@ const NoteSegment = ({
                         isNewFile.header = newText;
                         setText(newText);
                         noteDetailInfor.data[index].content = newText;
-                    // } else if (text.length > 0 && newText.length < text.length && newText[0] != text[0]) {
-                        // let len = noteDetailInfor.data[index - 1].content.length;
-                        // noteDetailInfor.data[index - 1].content = noteDetailInfor.data[index - 1].content.substring(0, len);
-                        
-                        // len = noteDetailInfor.data[index].content.length;
-                        // noteDetailInfor.data[index - 1].content += noteDetailInfor.data[index].content.substring(1, len);
-
-                        // noteDetailInfor.data.splice(index, 1);
-
-                        // noteDetailInfor.id = index;
-                        // if (textInputRef !== undefined) textInputRef.current.blur();
-                        // else curSegment.current.blur();
-                        // isDeleted();
-                        // noteDetailInfor.reset = 0;
-                        // noteDetailInfor.update = false;
-                        // noteDetailInfor.isAddNew = false;
-                        // return;
                     } else {
                         if (noteDetailInfor.update) {
                             setText(newText);

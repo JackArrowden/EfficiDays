@@ -119,6 +119,47 @@ const l_note = {
         letterSpacing: 1.5
     },
 
+    txtStyle1 : {
+        color: '#888',
+        fontSize: 28,
+        fontWeight: 'bold',
+        letterSpacing: 1.6
+    },
+
+    txtStyle2 : {
+        color: '#aaa',
+        fontSize: 18,
+        letterSpacing: 1.4
+    },
+
+    txtStyle3 : {
+        color: '#999',
+        fontSize: 18,
+        fontWeight: 'bold',
+        letterSpacing: 1.4
+    },
+
+    txtStyle4 : {
+        color: '#999',
+        fontSize: 18,
+        fontStyle: 'italic',
+        letterSpacing: 1.4
+    },
+
+    txtStyle5 : {
+        color: '#999',
+        fontSize: 18,
+        textDecorationLine: 'underline',
+        letterSpacing: 1.4
+    },
+
+    txtStyle6 : {
+        color: '#999',
+        fontSize: 22,
+        fontStyle: 'italic',
+        letterSpacing: 1.5
+    },
+
     circle : {
         borderRadius: 9999,
         backgroundColor: '#B0EBB4',

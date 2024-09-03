@@ -13,7 +13,8 @@ export const noteDetailInfor = {
     add: false,
     del: false,
     idAdd: 0,
-    idDel: 0
+    idDel: 0,
+    curSegment: 0,
 };
 
 export function getNoteDetailInfor(data) {
