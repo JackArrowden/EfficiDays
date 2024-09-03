@@ -11,12 +11,14 @@ import Tabs from './app/_btmTabs';
 import ViewNote from './app/_noteTab/viewNote';
 import deleteFile from './components/Note/deleteFile';
 import { curDir, fileIndex, noteFile } from './data/noteDir';
+import { listAccsDirs } from './data/accDir';
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   // deleteFile(fileIndex)
   // deleteFile(curDir)
+  // deleteFile(listAccsDirs)
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>

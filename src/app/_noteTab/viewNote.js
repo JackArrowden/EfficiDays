@@ -78,12 +78,12 @@ export default function ViewNote() {
   }
 
   const handleFocus = () => {
-    setDisplayed(true);
+    if (!isDisplayed) setDisplayed(true);
     noteDetailInfor.autoFocus = false;
   }
 
   const handleBlur = () => {
-    setDisplayed(false);
+    if (isDisplayed) setDisplayed(false);
   }
 
   const textInputRef = useRef(null);

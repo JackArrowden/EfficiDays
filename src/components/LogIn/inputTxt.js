@@ -7,16 +7,18 @@ import l_login from '../../style/loginRegister';
 const InputTxt = ({
   height = 36, 
   type = "Username", 
-  isSecure = false
+  isSecure = false,
+  text,
+  setText = Function
 }) => {
   const [focused, setFocused] = useState(false);
 
   return (
     <View style={[global.f, l_login.setHW(height), l_login.global]}>
       {isSecure ? (
-        <TextInput placeholder={type} style={[l_login.input]} secureTextEntry/>
+        <TextInput placeholder={type} style={[l_login.input]} value={text} onChangeText={setText} secureTextEntry/>
       ) : (
-        <TextInput placeholder={type} style={[l_login.input]}/>
+        <TextInput placeholder={type} style={[l_login.input]} value={text} onChangeText={setText}/>
       )}
     </View>
   );

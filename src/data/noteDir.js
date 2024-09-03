@@ -19,8 +19,3 @@ export const fileDir = {
 export function updateFileDir() {
     fileDir.fileDir = sysDir + noteFile.fileName + '.bin'
 };
-// let array = [
-//     {textHeader: "First note", notePreview: "Preview of first note", fileName: "f1"}, 
-//     {textHeader: "Second note", notePreview: "Preview of second note", fileName: "f2"}, 
-//     {textHeader: "Third note", notePreview: "Preview of third note", fileName: "f3"}
-// ];

@@ -14,7 +14,7 @@ const HeaderDetail = ({
     textLeft = "Note",
     textRight = "Done",
     isDisplayed = false,
-    setDisplayed
+    setDisplayed = Function
 }) => {
     const navigation = useNavigation();
 
