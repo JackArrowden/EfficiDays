@@ -71,6 +71,7 @@ const l_todo = {
         "backgroundColor": "#BFF6C3",
         "margin": "auto",
         "marginTop": 20,
+        "marginBottom": 10,
         "borderRadius": 20,
     },
 
@@ -90,6 +91,7 @@ const l_todo = {
         "flexDirection": "row",
         "justifyContent": "space-between",
         "margin": 10,
+        "marginTop": 10,
         "gap": 10,
     },
     
