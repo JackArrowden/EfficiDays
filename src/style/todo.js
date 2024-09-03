@@ -76,7 +76,7 @@ const l_todo = {
 
     StreakNum: {
         "color": "#666666",
-        "fontSize": 40,
+        "fontSize": 30,
         "margin": "auto",
         "padding": 20,
         "paddingTop": 0,
@@ -89,7 +89,7 @@ const l_todo = {
         "color": "#666666",
         "fontSize": 20,
         "padding": 10,
-        "marginTop": 0,
+        "marginTop": 10,
         "marginBottom": 10,
         "backgroundColor": "#BFF6C3",
         "display": "flex",
