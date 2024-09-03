@@ -7,7 +7,8 @@ import l_login from "../style/loginRegister";
 import InputTxt from "../components/LogIn/inputTxt";
 
 import { readListAccs } from "../components/LogIn/accountsFileHandlers";
-import { accFile, listAccReset, listAccsDirs, updateFileAccDir } from "../data/accDir";
+import { accFile, fileAccDir, listAccReset, listAccsDirs, updateFileAccDir } from "../data/accDir";
+import { readAccInfor } from "../components/Profile/accInforHandlers";
 
 export default function LogIn() {
     const navigation = useNavigation();
@@ -65,7 +66,10 @@ export default function LogIn() {
                             else {
                                 let result = loginSystem({name: username, pass: password});
                                 if (result != "Success") Alert.alert("Error", result);
-                                else navigation.push('Tabs')
+                                else {
+                                    readAccInfor(fileAccDir.fileAccDir);
+                                    navigation.push('Tabs');
+                                }
                             }
                         }}
                     >

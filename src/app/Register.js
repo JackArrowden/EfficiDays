@@ -7,8 +7,10 @@ import l_login from "../style/loginRegister";
 
 import InputTxt from "../components/LogIn/inputTxt";
 import { readListAccs, writeListAccs } from "../components/LogIn/accountsFileHandlers";
-import { accId, listAccReset, listAccsDirs } from "../data/accDir";
-import { readAccID } from "../components/LogIn/accIdHandlers";
+import { accFile, accId, fileAccDir, listAccReset, listAccsDirs, updateFileAccDir } from "../data/accDir";
+import { readAccID, writeAccId } from "../components/LogIn/accIdHandlers";
+import { writeAccInfor } from "../components/Profile/accInforHandlers";
+import { accInfor } from "../data/profile/account";
 
 export default function Register() {
     const navigation = useNavigation();
@@ -58,9 +60,19 @@ export default function Register() {
             if (listAccs[index].username == username) return "This username is existing in the system!";
         }
         listAccs.push({username : name, password : pass, fileName : "acc" + fileId.toString()});
-        //////////////// Cập nhật lại file id
         writeListAccs(listAccs, listAccsDirs);
-        ////////////// Thêm hàm tạo file người dùng
+        
+        // Create user's file
+        accFile.fileName = "acc" + fileId.toString();
+        updateFileAccDir();
+        accInfor.username = name;
+        accInfor.password = pass;
+        writeAccInfor(fileAccDir.fileAccDir);
+
+        // Update file ID
+        fileId += 1;
+        writeAccId(fileId, accId);
+
         return "Success";
     }
   

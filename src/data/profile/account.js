@@ -1,7 +1,6 @@
 import { fileAccDir } from "../accDir";
 
 export const accInfor = {
-    data: [],
     id: 0,
     numTomatoes: 0,
     accountName: "User",
@@ -12,11 +11,7 @@ export const accInfor = {
     listNoteFile: [],
     listTodoFile: [],
     listBoughtItems: [],
-    avtTemp: require('../../assets/images//avt.jpg')
-};
-
-export function getAccInfor(data) {
-    accInfor.data = data
+    avtTemp: require('../../assets/images/avt.jpg')
 };
 
 export function saveAccInfor() {
