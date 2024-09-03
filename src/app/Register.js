@@ -70,7 +70,7 @@ export default function Register() {
         writeAccInfor(fileAccDir.fileAccDir);
 
         // Update file ID
-        fileId += 1;
+        setFileId(fileId + 1);
         writeAccId(fileId, accId);
 
         return "Success";
