@@ -74,12 +74,13 @@ export async function writeAccInfor(filePath) {
 
 export async function readAccInfor(filePath) {
     const stringData = await readF(filePath);
+
     if (stringData == null) return;
     
     // ID
     let curLen = parseInt(stringData[0], 10);
     let readPointer = curLen + 1;
-    accInfor.id = parseInt(stringData.substring(1, readPointer), 10);
+    let id = parseInt(stringData.substring(1, readPointer), 10);
 
     // Number of tomatoes
     curLen = parseInt(stringData[readPointer], 10);
@@ -87,7 +88,7 @@ export async function readAccInfor(filePath) {
 
     let numLetters = parseInt(stringData.substring(readPointer, readPointer + curLen), 10);
     readPointer += curLen;
-    accInfor.numTomatoes = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
+    let numTomatoes = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
     readPointer += numLetters;
 
     // Account name
@@ -96,7 +97,7 @@ export async function readAccInfor(filePath) {
 
     numLetters = parseInt(stringData.substring(readPointer, readPointer + curLen), 10);
     readPointer += curLen;
-    accInfor.accountName = stringData.substring(readPointer, readPointer + numLetters);
+    let accountName = stringData.substring(readPointer, readPointer + numLetters);
     readPointer += numLetters;
 
     // User name
@@ -105,7 +106,7 @@ export async function readAccInfor(filePath) {
 
     numLetters = parseInt(stringData.substring(readPointer, readPointer + curLen), 10);
     readPointer += curLen;
-    accInfor.username = stringData.substring(readPointer, readPointer + numLetters);
+    let username = stringData.substring(readPointer, readPointer + numLetters);
     readPointer += numLetters;
 
     // Password
@@ -114,7 +115,7 @@ export async function readAccInfor(filePath) {
 
     numLetters = parseInt(stringData.substring(readPointer, readPointer + curLen), 10);
     readPointer += curLen;
-    accInfor.password = stringData.substring(readPointer, readPointer + numLetters);
+    let password = stringData.substring(readPointer, readPointer + numLetters);
     readPointer += numLetters;
 
     // Birthday
@@ -123,7 +124,7 @@ export async function readAccInfor(filePath) {
 
     numLetters = parseInt(stringData.substring(readPointer, readPointer + curLen), 10);
     readPointer += curLen;
-    accInfor.accountName = stringData.substring(readPointer, readPointer + numLetters);
+    let birthday = stringData.substring(readPointer, readPointer + numLetters);
     readPointer += numLetters;
 
     // Learning time
@@ -132,7 +133,7 @@ export async function readAccInfor(filePath) {
 
     numLetters = parseInt(stringData.substring(readPointer, readPointer + curLen), 10);
     readPointer += curLen;
-    accInfor.learningTime = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
+    let learningTime = parseInt(stringData.substring(readPointer, readPointer + numLetters), 10);
     readPointer += numLetters;
 
     // List file notes
@@ -140,11 +141,12 @@ export async function readAccInfor(filePath) {
     readPointer++;
     let numFiles = parseInt(stringData.substring(readPointer, readPointer + lenNumFiles), 10);
     readPointer += lenNumFiles;
+    let listNoteFile = [];
     
     for (let i = 0; i < numFiles; i++) {
         numLetters = parseInt(stringData[readPointer], 10);
         readPointer++;
-        accInfor.listNoteFile.push(stringData.substring(readPointer, readPointer + numLetters));
+        listNoteFile.push(stringData.substring(readPointer, readPointer + numLetters));
         readPointer += numLetters;
     }
 
@@ -153,11 +155,12 @@ export async function readAccInfor(filePath) {
     readPointer++;
     numFiles = parseInt(stringData.substring(readPointer, readPointer + lenNumFiles), 10);
     readPointer += lenNumFiles;
+    let listTodoFile = [];
     
     for (let i = 0; i < numFiles; i++) {
         numLetters = parseInt(stringData[readPointer], 10);
         readPointer++;
-        accInfor.listTodoFile.push(stringData.substring(readPointer, readPointer + numLetters));
+        listTodoFile.push(stringData.substring(readPointer, readPointer + numLetters));
         readPointer += numLetters;
     }    
 
@@ -166,13 +169,14 @@ export async function readAccInfor(filePath) {
     readPointer++;
     numFiles = parseInt(stringData.substring(readPointer, readPointer + lenNumFiles), 10);
     readPointer += lenNumFiles;
+    let listBoughtItems = [];
     
     for (let i = 0; i < numFiles; i++) {
         numLetters = parseInt(stringData[readPointer], 10);
         readPointer++;
-        accInfor.listBoughtItems.push(stringData.substring(readPointer, readPointer + numLetters));
+        listBoughtItems.push(stringData.substring(readPointer, readPointer + numLetters));
         readPointer += numLetters;
     }   
 
-    return;
+    return [{id, numTomatoes, accountName, username, password, birthday, learningTime, listNoteFile, listTodoFile, listBoughtItems}];
 };

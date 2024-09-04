@@ -9,6 +9,9 @@ import InputTxt from "../components/LogIn/inputTxt";
 import { readListAccs } from "../components/LogIn/accountsFileHandlers";
 import { accFile, fileAccDir, listAccReset, listAccsDirs, updateFileAccDir } from "../data/accDir";
 import { readAccInfor } from "../components/Profile/accInforHandlers";
+import { noteFile, updateFileDir } from "../data/noteDir";
+import { accInfor } from "../data/profile/account";
+import { listNote } from "../data/notes/listNote";
 
 export default function LogIn() {
     const navigation = useNavigation();
@@ -45,6 +48,7 @@ export default function LogIn() {
         for (let index = 0; index < listAccs.length; index++) {
             if (listAccs[index].username == name && listAccs[index].password == pass) {
                 accFile.fileName = listAccs[index].fileName;
+                listNote.isReset = true;
                 updateFileAccDir();
                 return "Success";
             }
@@ -67,8 +71,24 @@ export default function LogIn() {
                                 let result = loginSystem({name: username, pass: password});
                                 if (result != "Success") Alert.alert("Error", result);
                                 else {
-                                    readAccInfor(fileAccDir.fileAccDir);
-                                    navigation.push('Tabs');
+                                    readAccInfor(fileAccDir.fileAccDir)
+                                    .then (data => {
+                                        accInfor.id = data[0].id;
+                                        accInfor.numTomatoes = data[0].numTomatoes;
+                                        accInfor.accountName = data[0].accountName;
+                                        accInfor.username = data[0].username;
+                                        accInfor.password = data[0].password;
+                                        accInfor.birthday = data[0].birthday;
+                                        accInfor.learningTime = data[0].learningTime;
+                                        accInfor.listNoteFile = Array.from(data[0].listNoteFile);
+                                        accInfor.listTodoFile = Array.from(data[0].listTodoFile);
+                                        accInfor.listBoughtItems = Array.from(data[0].listBoughtItems); 
+                                        
+                                        noteFile.curDir = "acc" + accInfor.id + "NotePreview";
+                                        noteFile.fileIndex = "acc" + accInfor.id + "FileIndex";
+                                        updateFileDir();
+                                        navigation.push('Tabs');
+                                    });
                                 }
                             }
                         }}

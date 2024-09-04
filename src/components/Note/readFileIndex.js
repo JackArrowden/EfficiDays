@@ -7,19 +7,18 @@ export async function writeFileIndex(fileIndex, filePath) {
 }
 
 export async function readFileIndex(filePath) {
-    let stringData = "";
+    try {
+        const data = await readF(filePath);
 
-    await readF(filePath)
-    .then(data => {
-        stringData = data;
-        console.log("data:", data)
-    });
-
-    if (stringData == null) {
+        if (data === null || isNaN(data)) {
+            await writeFileIndex(0, filePath);
+            return 0;
+        } else {
+            const fileIndex = parseInt(data, 10);
+            return fileIndex;
+        }
+    } catch (error) {
         await writeFileIndex(0, filePath);
-        return 0
+        return 0;
     }
-    
-    const fileIndex = parseInt(stringData, 10);
-    return fileIndex;
-};
+}

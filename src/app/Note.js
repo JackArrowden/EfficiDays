@@ -11,8 +11,8 @@ import AddNoteBtn from "../components/Note/addNoteBtn";
 import NoteFrame from "../components/Note/noteFrame";
 import readNotePreview from "../components/Note/readNotePreview";
 import { readFileIndex } from "../components/Note/readFileIndex";
-import { curDir, fileIndex } from "../data/noteDir";
-import { listNote } from "../data/notes/listNote";
+import { fileDir } from "../data/noteDir";
+import { listNote, saveListNote } from "../data/notes/listNote";
 
 export default function Note() {
   const { width, height } = Dimensions.get('screen');
@@ -25,18 +25,19 @@ export default function Note() {
     if (!isGetData) {
       getNotePrev();
       getFileId();
+      listNote.fileID = fileId;
     }
   }, [isGetData]);
 
   useFocusEffect(() => {
     if (listNote.isReset) {
-      listNote.isReset = false
+      listNote.isReset = false;
       getNotePrev();
     }
   })
 
   const getNotePrev = () => {
-    readNotePreview(curDir)
+    readNotePreview(fileDir.curDir)
     .then(data => {
       setIsGetData(true);
       setNotePrev(data);
@@ -44,7 +45,7 @@ export default function Note() {
   }
 
   const getFileId = () => {
-    readFileIndex(fileIndex)
+    readFileIndex(fileDir.fileIndex)
     .then(data => {
       setFileId(data);
     })

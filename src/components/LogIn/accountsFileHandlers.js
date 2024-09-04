@@ -31,7 +31,7 @@ export async function readListAccs(filePath) {
     let listAccs = [];
     const stringData = await readF(filePath);
     if (stringData == null) {
-        return listAccs
+        return listAccs;
     }
     
     const lenNumAccs = parseInt(stringData[0], 10);

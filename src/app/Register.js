@@ -65,13 +65,14 @@ export default function Register() {
         // Create user's file
         accFile.fileName = "acc" + fileId.toString();
         updateFileAccDir();
+        accInfor.id = fileId;
         accInfor.username = name;
         accInfor.password = pass;
         writeAccInfor(fileAccDir.fileAccDir);
 
         // Update file ID
         setFileId(fileId + 1);
-        writeAccId(fileId, accId);
+        writeAccId(fileId + 1, accId);
 
         return "Success";
     }

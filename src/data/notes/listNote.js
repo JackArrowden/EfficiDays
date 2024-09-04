@@ -1,10 +1,11 @@
 import writeNotePreview from "../../components/Note/writeNotePreview";
-import { curDir } from "../noteDir";
+import { fileDir } from "../noteDir";
 
 export const listNote = {
     data: [],
     curFile: 0,
-    isReset: false
+    isReset: false,
+    fileID: 0
 };
 
 export function getNotePrevs(data) {
@@ -12,8 +13,7 @@ export function getNotePrevs(data) {
 };
 
 export function saveListNote() {
-    writeNotePreview(listNote.data, curDir);
-    listNote.isReset = true
+    writeNotePreview(listNote.data, fileDir.curDir);
 };
 
 export function getIDFile(filename) {

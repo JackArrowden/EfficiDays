@@ -14,13 +14,3 @@ export default async function deleteFile(filePath) {
         console.error('Error deleting file:', error);
     }
 };
-
-//////
-// const [isDeleted, setDeleted] = useState(true);
-// useEffect(() => {
-//     if (isDeleted) {
-//         deleteFile(curDir);
-//         setDeleted(false);
-//     }
-// }, [isDeleted]);
-/////

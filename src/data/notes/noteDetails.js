@@ -22,6 +22,5 @@ export function getNoteDetailInfor(data) {
 };
 
 export function saveNoteDetailInfor() {
-    console.log("Dir", fileDir)
     writeNoteDetails(noteDetailInfor.data, fileDir.fileDir);
 };

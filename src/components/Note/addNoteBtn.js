@@ -5,8 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import global from '../../style/global';
 import l_note from '../../style/note';
 
-import { isNewFile, noteFile, updateFileDir } from '../../data/noteDir';
-import { listNote, getNotePrevs } from '../../data/notes/listNote';
+import { fileDir, isNewFile, noteFile, updateFileDir } from '../../data/noteDir';
+import { listNote, getNotePrevs, getIDFile } from '../../data/notes/listNote';
+import { accInfor, saveAccInfor } from '../../data/profile/account';
+import { readAccInfor, writeAccInfor } from '../Profile/accInforHandlers';
+import { fileAccDir } from '../../data/accDir';
+import { readFileIndex, writeFileIndex } from './readFileIndex';
 
 const AddNoteBtn = ({
     height = 36, 
@@ -22,12 +26,21 @@ const AddNoteBtn = ({
         <TouchableOpacity 
             style={[global.f_row, global.container, global.setHW(height / 16), global.mb_32]}
             onPress={()=>{
+                readFileIndex(fileDir.fileIndex)
+                .then(data => {
+                    fileIndex = data
+                })
+
                 getNotePrevs(data);
-                listNote.data.push({textHeader: "", notePreview: "", fileName: "f" + fileIndex.toString()});
-                noteFile.fileName = "f" + fileIndex.toString();
+                listNote.data.push({textHeader: "", notePreview: "", fileName: "acc" + accInfor.id.toString() + "f" + listNote.fileID.toString()});
+                noteFile.fileName = "acc" + accInfor.id.toString() + "f" + listNote.fileID.toString();
                 updateFileDir();
-                console.log("Notedir: ", noteFile.fileName)
-                setFileIndex(fileIndex + 1);
+
+                accInfor.listNoteFile.push(noteFile.fileName);
+                writeAccInfor(fileAccDir.fileAccDir);
+
+                listNote.fileID++;
+
                 isNewFile.new = true;
                 navigation.navigate(nav)
             }}
