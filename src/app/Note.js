@@ -25,7 +25,6 @@ export default function Note() {
     if (!isGetData) {
       getNotePrev();
       getFileId();
-      listNote.fileID = fileId;
     }
   }, [isGetData]);
 
@@ -47,7 +46,7 @@ export default function Note() {
   const getFileId = () => {
     readFileIndex(fileDir.fileIndex)
     .then(data => {
-      setFileId(data);
+      listNote.fileID = data;
     })
   }
 
